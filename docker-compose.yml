@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_BOOKING_ENGINE_URL: ${NEXT_PUBLIC_BOOKING_ENGINE_URL}
+    image: vimex-new-landing:latest
+    container_name: vimex-new-landing
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "3001:3000"

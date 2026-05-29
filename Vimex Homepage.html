@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vimex Vacation Rentals · Playa del Carmen, Tulum & Akumal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       LOADER
+       ============================================================ -->
+  <div class="loader" aria-hidden="true">
+    <img class="loader__brand" src="assets/vimex-logo-white.png" alt="Vimex Vacation Rentals" />
+    <div class="loader__sub">
+      <span>Playa del Carmen</span>
+      <span>·</span>
+      <span>Tulum</span>
+      <span>·</span>
+      <span>Akumal</span>
+    </div>
+    <div class="loader__progress"></div>
+  </div>
+
+  <!-- ============================================================
+       CUSTOM CURSOR
+       ============================================================ -->
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- ============================================================
+       NAV
+       ============================================================ -->
+  <nav class="nav">
+    <a href="#" class="nav__logo" aria-label="Vimex Vacation Rentals">
+      <img src="assets/vimex-logo-white.png" alt="Vimex" class="nav__logo-white" />
+      <img src="assets/vimex-logo.png" alt="Vimex" class="nav__logo-color" />
+    </a>
+    <div class="nav__menu">
+      <a href="#feel" data-en="About Us" data-es="Quiénes Somos">Quiénes Somos</a>
+      <a href="#services" data-en="Property Management" data-es="Gestión de Propiedades">Gestión de Propiedades</a>
+      <a href="#dest" data-en="Destinations" data-es="Destinos">Destinos</a>
+      <a href="#contact" data-en="Contact Us" data-es="Contáctanos">Contáctanos</a>
+    </div>
+    <div class="nav__right">
+      <div class="nav__lang">
+        <button data-lang="es" class="is-active">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#contact" class="nav__cta" data-magnetic data-en="Book Now" data-es="Reservar Ahora">Reservar Ahora</a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero__media">
+      <div class="hero__img" style="background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=2000&q=85');"></div>
+      <div class="hero__gradient"></div>
+      <div class="hero__grain"></div>
+    </div>
+
+    <div class="hero__inner">
+      <div class="hero__eyebrow" data-en="Vimex Vacation Rentals · Riviera Maya" data-es="Vimex Vacation Rentals · Riviera Maya">Vimex Vacation Rentals · Riviera Maya</div>
+      <h1 class="hero__title">
+        <span class="line" data-en="Enjoy the Caribbean" data-es="Disfruta el Caribe">Disfruta el Caribe</span>
+        <em><span class="line" data-en="like home." data-es="como en casa.">como en casa.</span></em>
+      </h1>
+
+      <div class="hero__bottom">
+        <p class="hero__sub" data-en="Let our family show your family the way home — luxury villas, beachfront condos, and concierge service across the Mexican Caribbean." data-es="Deja que nuestra familia le muestre a la tuya el camino a casa — villas de lujo, condominios frente al mar y servicio de concierge en todo el Caribe Mexicano.">Deja que nuestra familia le muestre a la tuya el camino a casa — villas de lujo, condominios frente al mar y servicio de concierge en todo el Caribe Mexicano.</p>
+
+        <div class="hero__scroll">
+          <span data-en="Scroll to explore" data-es="Desliza para explorar">Desliza para explorar</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search widget -->
+    <form class="search" onsubmit="return false;">
+      <div class="search__field">
+        <span class="search__label" data-en="Destination" data-es="Destino">Destino</span>
+        <span class="search__value">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7 8-12a8 8 0 1 0-16 0c0 5 8 12 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="Select destination" data-es="Selecciona destino">Selecciona destino</span>
+        </span>
+      </div>
+      <div class="search__field">
+        <span class="search__label" data-en="Dates" data-es="Fechas">Fechas</span>
+        <span class="search__value">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span data-en="Check in — Check out" data-es="Llegada — Salida">Llegada — Salida</span>
+        </span>
+      </div>
+      <div class="search__field">
+        <span class="search__label" data-en="Guests" data-es="Huéspedes">Huéspedes</span>
+        <span class="search__value">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span data-en="2 guests" data-es="2 huéspedes">2 huéspedes</span>
+        </span>
+      </div>
+      <button type="submit" class="search__btn" data-magnetic>
+        <span data-en="Search Availability" data-es="Buscar Disponibilidad">Buscar Disponibilidad</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <!-- ============================================================
+       FEEL AT HOME
+       ============================================================ -->
+  <section id="feel" class="feel" data-reveal>
+    <div class="feel__grid">
+      <div class="feel__copy">
+        <div class="section__eyebrow" data-en="Your Home Away From Home" data-es="Tu Hogar Lejos de Casa">Tu Hogar Lejos de Casa</div>
+        <h2 class="reveal-up">
+          <span data-en="Feel at home in" data-es="Siéntete en casa en">Siéntete en casa en</span>
+          <em data-en="Playa del Carmen." data-es="Playa del Carmen.">Playa del Carmen.</em>
+        </h2>
+        <p class="feel__body reveal-up delay-1" data-en="We welcome everyone to what we truly feel is paradise — familiarizing you with your vacation home and its surroundings in the Mexican Caribbean. Expect attentive bilingual service throughout your stay, and return home with beautiful memories of the Riviera Maya." data-es="Te damos la bienvenida a lo que consideramos un verdadero paraíso — familiarizándote con tu hogar vacacional y sus alrededores en el Caribe Mexicano. Espera de nosotros un servicio bilingüe y atento durante toda tu estancia, y regresa a casa con hermosos recuerdos de la Riviera Maya.">Te damos la bienvenida a lo que consideramos un verdadero paraíso — familiarizándote con tu hogar vacacional y sus alrededores en el Caribe Mexicano. Espera de nosotros un servicio bilingüe y atento durante toda tu estancia, y regresa a casa con hermosos recuerdos de la Riviera Maya.</p>
+
+        <div class="feel__stats">
+          <div class="feel__stat reveal-up delay-2">
+            <span class="feel__stat-value"><span data-count="20">0</span>+</span>
+            <span class="feel__stat-label" data-en="Years of experience" data-es="Años de experiencia">Años de experiencia</span>
+          </div>
+          <div class="feel__stat reveal-up delay-3">
+            <span class="feel__stat-value"><span data-count="100">0</span>%</span>
+            <span class="feel__stat-label" data-en="Bilingual expert staff" data-es="Personal experto bilingüe">Personal experto bilingüe</span>
+          </div>
+          <div class="feel__stat reveal-up delay-4">
+            <span class="feel__stat-value"><em>★</em><span data-count="4.9" data-decimals="1">0</span></span>
+            <span class="feel__stat-label" data-en="Guest satisfaction" data-es="Satisfacción de huéspedes">Satisfacción de huéspedes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="feel__media reveal-img-wrap" data-reveal>
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1583416750470-965b2707b355?w=1200&q=85');"></div>
+        <span class="feel__media-caption">Mar Caribe · Quintana Roo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MARQUEE
+       ============================================================ -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span class="marquee__item">
+        Playa del Carmen <span class="dot"></span>
+        <span class="stroke">Tulum</span> <span class="dot"></span>
+        Akumal <span class="dot"></span>
+        <span class="stroke">Playacar</span> <span class="dot"></span>
+        Mamitas <span class="dot"></span>
+        <span class="stroke">Coco Bay</span> <span class="dot"></span>
+      </span>
+      <span class="marquee__item">
+        Playa del Carmen <span class="dot"></span>
+        <span class="stroke">Tulum</span> <span class="dot"></span>
+        Akumal <span class="dot"></span>
+        <span class="stroke">Playacar</span> <span class="dot"></span>
+        Mamitas <span class="dot"></span>
+        <span class="stroke">Coco Bay</span> <span class="dot"></span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section id="services" class="services" data-reveal>
+    <div class="services__head">
+      <div>
+        <div class="section__eyebrow" data-en="What We Do" data-es="Lo Que Hacemos">Lo Que Hacemos</div>
+        <h2 class="section__title reveal-up">
+          <span data-en="Our comprehensive" data-es="Nuestros servicios">Nuestros servicios</span><br/>
+          <em data-en="services." data-es="integrales.">integrales.</em>
+        </h2>
+      </div>
+      <div class="right">
+        <p class="services__sub reveal-up delay-1" data-en="A full suite of services designed to maximize your property's potential and ensure a superior experience for every guest who walks through the door." data-es="Una gama completa de servicios diseñados para maximizar el potencial de tu propiedad y garantizar una experiencia superior para cada huésped que cruza la puerta.">Una gama completa de servicios diseñados para maximizar el potencial de tu propiedad y garantizar una experiencia superior para cada huésped que cruza la puerta.</p>
+        <a href="#contact" class="btn btn--primary reveal-up delay-2" data-magnetic>
+          <span data-en="Contact Us" data-es="Contáctanos">Contáctanos</span>
+          <span class="arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="services__list">
+      <div class="service">
+        <span class="service__num">01</span>
+        <div>
+          <span class="service__icon">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          </span>
+          <h3 class="service__title" data-en="Property Maintenance" data-es="Mantenimiento de Propiedades">Mantenimiento de Propiedades</h3>
+          <p class="service__body" data-en="Proactive upkeep, preventative measures, and rapid response to all maintenance needs — preserving your property's value year after year." data-es="Mantenimiento proactivo, medidas preventivas y respuesta rápida a todas las necesidades, preservando el valor de tu propiedad año tras año.">Mantenimiento proactivo, medidas preventivas y respuesta rápida a todas las necesidades, preservando el valor de tu propiedad año tras año.</p>
+        </div>
+        <span class="service__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+
+      <div class="service">
+        <span class="service__num">02</span>
+        <div>
+          <span class="service__icon">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+          </span>
+          <h3 class="service__title" data-en="Guest Management" data-es="Gestión de Huéspedes">Gestión de Huéspedes</h3>
+          <p class="service__body" data-en="From booking inquiries to seamless check-ins and personalized support, we ensure every guest enjoys a memorable, frictionless stay." data-es="Desde consultas de reserva hasta check-ins sin contratiempos y atención personalizada, garantizamos que cada huésped disfrute una estancia memorable y sin fricciones.">Desde consultas de reserva hasta check-ins sin contratiempos y atención personalizada, garantizamos que cada huésped disfrute una estancia memorable y sin fricciones.</p>
+        </div>
+        <span class="service__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+
+      <div class="service">
+        <span class="service__num">03</span>
+        <div>
+          <span class="service__icon">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20V8l9-5 9 5v12"/><path d="M9 22V12h6v10"/></svg>
+          </span>
+          <h3 class="service__title" data-en="Marketing &amp; Booking" data-es="Marketing y Reservas">Marketing y Reservas</h3>
+          <p class="service__body" data-en="Strategic listing optimization, professional photography, and dynamic pricing to achieve maximum occupancy and revenue." data-es="Optimización estratégica de anuncios, fotografía profesional y precios dinámicos para lograr la máxima ocupación e ingresos.">Optimización estratégica de anuncios, fotografía profesional y precios dinámicos para lograr la máxima ocupación e ingresos.</p>
+        </div>
+        <span class="service__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+
+      <div class="service">
+        <span class="service__num">04</span>
+        <div>
+          <span class="service__icon">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 6-6"/></svg>
+          </span>
+          <h3 class="service__title" data-en="Financial Reporting" data-es="Reportes Financieros">Reportes Financieros</h3>
+          <p class="service__body" data-en="Clear, transparent financial statements, detailed performance insights, and easy access to all your property's data — anytime." data-es="Estados financieros claros y transparentes, información detallada del rendimiento y acceso fácil a todos los datos de tu propiedad — en cualquier momento.">Estados financieros claros y transparentes, información detallada del rendimiento y acceso fácil a todos los datos de tu propiedad — en cualquier momento.</p>
+        </div>
+        <span class="service__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS
+       ============================================================ -->
+  <section class="stats" data-reveal>
+    <div class="stats__bg"></div>
+    <div class="stats__inner">
+      <div class="section__eyebrow" style="color:var(--teal)" data-en="By the Numbers" data-es="En Números">En Números</div>
+      <h2 class="section__title reveal-up" style="color:#fff;max-width:22ch">
+        <span data-en="Two decades of trusted service in" data-es="Dos décadas de servicio de confianza en">Dos décadas de servicio de confianza en</span>
+        <em data-en="the Riviera Maya." data-es="la Riviera Maya.">la Riviera Maya.</em>
+      </h2>
+
+      <div class="stats__grid">
+        <div class="stats__item reveal-up">
+          <span class="stats__val"><span data-count="20">0</span><em>+</em></span>
+          <span class="stats__label" data-en="Years in the Riviera Maya" data-es="Años en la Riviera Maya">Años en la Riviera Maya</span>
+        </div>
+        <div class="stats__item reveal-up delay-1">
+          <span class="stats__val"><span data-count="150">0</span><em>+</em></span>
+          <span class="stats__label" data-en="Properties under management" data-es="Propiedades en gestión">Propiedades en gestión</span>
+        </div>
+        <div class="stats__item reveal-up delay-2">
+          <span class="stats__val"><span data-count="10000">0</span><em>+</em></span>
+          <span class="stats__label" data-en="Happy guests served" data-es="Huéspedes satisfechos">Huéspedes satisfechos</span>
+        </div>
+        <div class="stats__item reveal-up delay-3">
+          <span class="stats__val"><span data-count="4.9" data-decimals="1">0</span><em>★</em></span>
+          <span class="stats__label" data-en="Average guest rating" data-es="Calificación promedio">Calificación promedio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RIVIERA MAYA
+       ============================================================ -->
+  <section class="riviera">
+    <div class="riviera__hero" data-reveal>
+      <div class="riviera__bg" style="background-image:url('https://images.unsplash.com/photo-1518509562904-e7ef99cddc85?w=2000&q=85');"></div>
+      <div class="riviera__overlay">
+        <div class="riviera__meta" data-en="Playa del Carmen, MX · 20°37'N 87°04'W" data-es="Playa del Carmen, MX · 20°37'N 87°04'W">Playa del Carmen, MX · 20°37'N 87°04'W</div>
+        <h2 class="riviera__title">
+          <span class="reveal-mask"><span data-en="Riviera Maya." data-es="Riviera Maya.">Riviera Maya.</span></span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="riviera__body-wrap" data-reveal>
+      <div class="riviera__caption reveal-up" data-en="A Caribbean playground that has been calling vacationers home since 1974." data-es="Un paraíso caribeño que ha llamado a casa a los vacacionistas desde 1974.">Un paraíso caribeño que ha llamado a casa a los vacacionistas desde 1974.</div>
+      <div class="riviera__body reveal-up delay-1">
+        <p data-en="The Riviera Maya continues to excite travelers of all ages as a hot, desirable beach-lovers vacation destination. The Mexican Caribbean — with its unique stunning beauty — has been appealing to vacationers from around the world since Cancún was introduced in 1974, the same year Quintana Roo became an official Mexican State." data-es="La Riviera Maya sigue emocionando a viajeros de todas las edades como uno de los destinos vacacionales de playa más codiciados. El Caribe Mexicano — con su impresionante belleza única — ha atraído a vacacionistas de todo el mundo desde que Cancún fue inaugurado en 1974, el mismo año en que Quintana Roo se convirtió en estado oficial de México.">La Riviera Maya sigue emocionando a viajeros de todas las edades como uno de los destinos vacacionales de playa más codiciados. El Caribe Mexicano — con su impresionante belleza única — ha atraído a vacacionistas de todo el mundo desde que Cancún fue inaugurado en 1974, el mismo año en que Quintana Roo se convirtió en estado oficial de México.</p>
+        <p data-en="Playa del Carmen has exploded over the past 20 years as a sought-after beachfront playground for relaxing, fun-filled travel getaways — the perfect blend of laid-back Caribbean charm and elevated modern hospitality." data-es="Playa del Carmen ha experimentado un explosivo crecimiento en los últimos 20 años como destino de playa para escapadas relajantes y llenas de diversión — la combinación perfecta entre el encanto caribeño y la hospitalidad moderna.">Playa del Carmen ha experimentado un explosivo crecimiento en los últimos 20 años como destino de playa para escapadas relajantes y llenas de diversión — la combinación perfecta entre el encanto caribeño y la hospitalidad moderna.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DESTINATIONS HORIZONTAL SCROLL
+       ============================================================ -->
+  <section id="dest" class="dest" data-reveal>
+    <div class="dest__head">
+      <div>
+        <div class="section__eyebrow" data-en="Popular Destinations" data-es="Destinos Populares">Destinos Populares</div>
+        <h2 class="section__title reveal-up">
+          <span data-en="Discover our" data-es="Descubre nuestros">Descubre nuestros</span>
+          <em data-en="destinations." data-es="destinos.">destinos.</em>
+        </h2>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end">
+        <button class="why__arrow" data-dest-nav="prev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button class="why__arrow" data-dest-nav="next" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="dest__rail">
+      <div class="dest__card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=1200&q=85');"></div>
+        <div class="dest__card-content">
+          <span class="dest__card-num">01 / 05</span>
+          <div>
+            <div class="dest__card-tag" data-en="The Original" data-es="El Origen">El Origen</div>
+            <h3 class="dest__card-name">Playa del Carmen</h3>
+            <div class="dest__card-cta">
+              <span data-en="Explore" data-es="Explorar">Explorar</span>
+              <span style="flex:1"></span>
+              <span class="circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dest__card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=1200&q=85');"></div>
+        <div class="dest__card-content">
+          <span class="dest__card-num">02 / 05</span>
+          <div>
+            <div class="dest__card-tag" data-en="Bohemian Soul" data-es="Alma Bohemia">Alma Bohemia</div>
+            <h3 class="dest__card-name">Tulum</h3>
+            <div class="dest__card-cta">
+              <span data-en="Explore" data-es="Explorar">Explorar</span>
+              <span style="flex:1"></span>
+              <span class="circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dest__card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=1200&q=85');"></div>
+        <div class="dest__card-content">
+          <span class="dest__card-num">03 / 05</span>
+          <div>
+            <div class="dest__card-tag" data-en="Hidden Cove" data-es="Cala Secreta">Cala Secreta</div>
+            <h3 class="dest__card-name">Akumal</h3>
+            <div class="dest__card-cta">
+              <span data-en="Explore" data-es="Explorar">Explorar</span>
+              <span style="flex:1"></span>
+              <span class="circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dest__card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=85');"></div>
+        <div class="dest__card-content">
+          <span class="dest__card-num">04 / 05</span>
+          <div>
+            <div class="dest__card-tag" data-en="Gated Golf Community" data-es="Comunidad de Golf">Comunidad de Golf</div>
+            <h3 class="dest__card-name">Playacar</h3>
+            <div class="dest__card-cta">
+              <span data-en="Explore" data-es="Explorar">Explorar</span>
+              <span style="flex:1"></span>
+              <span class="circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dest__card">
+        <div class="bg" style="background-image:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=85');"></div>
+        <div class="dest__card-content">
+          <span class="dest__card-num">05 / 05</span>
+          <div>
+            <div class="dest__card-tag" data-en="Beachfront Living" data-es="Vida Frente al Mar">Vida Frente al Mar</div>
+            <h3 class="dest__card-name">Mamitas</h3>
+            <div class="dest__card-cta">
+              <span data-en="Explore" data-es="Explorar">Explorar</span>
+              <span style="flex:1"></span>
+              <span class="circle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMMUNITIES STACK
+       ============================================================ -->
+  <section class="stack">
+    <div class="stack__intro" data-reveal>
+      <div class="section__eyebrow" style="color:var(--teal)" data-en="The Communities" data-es="Las Comunidades">Las Comunidades</div>
+      <h2 class="section__title reveal-up">
+        <span data-en="Playa del Carmen's most" data-es="Las comunidades más">Las comunidades más</span>
+        <em data-en="exclusive enclaves." data-es="exclusivas.">exclusivas.</em>
+      </h2>
+      <p class="reveal-up delay-1" data-en="From the gated golf community of Playacar to the beachfront enclaves of Coco Bay and Mamitas — we curate properties in the most desirable neighborhoods of the Riviera Maya." data-es="Desde la comunidad de golf cerrada de Playacar hasta los enclaves frente al mar de Coco Bay y Mamitas — seleccionamos propiedades en los vecindarios más deseados de la Riviera Maya.">Desde la comunidad de golf cerrada de Playacar hasta los enclaves frente al mar de Coco Bay y Mamitas — seleccionamos propiedades en los vecindarios más deseados de la Riviera Maya.</p>
+    </div>
+
+    <div class="stack__sticky">
+      <div class="stack__panel">
+        <div class="stack__panel-inner">
+          <div class="stack__panel-media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1400&q=85');"></div></div>
+          <div class="stack__panel-info">
+            <span class="stack__panel-num">01 — Playacar</span>
+            <h3 class="stack__panel-name">Playacar</h3>
+            <p class="stack__panel-body" data-en="A gated golf community minutes from downtown — colonial-style villas, mature jungle, and a championship 18-hole course." data-es="Una comunidad de golf cerrada a minutos del centro — villas estilo colonial, jungla madura y un campo de 18 hoyos.">Una comunidad de golf cerrada a minutos del centro — villas estilo colonial, jungla madura y un campo de 18 hoyos.</p>
+            <div class="stack__panel-tags">
+              <span>Golf</span><span>Gated</span><span>Family</span><span>Beachfront</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stack__panel">
+        <div class="stack__panel-inner">
+          <div class="stack__panel-info">
+            <span class="stack__panel-num">02 — Mamitas</span>
+            <h3 class="stack__panel-name">Mamitas</h3>
+            <p class="stack__panel-body" data-en="Steps from Playa del Carmen's most iconic beach club. The energy capital of Playa — rooftops, restaurants and turquoise water at your door." data-es="A pasos del beach club más icónico de Playa del Carmen. La capital de la energía — terrazas, restaurantes y agua turquesa en tu puerta.">A pasos del beach club más icónico de Playa del Carmen. La capital de la energía — terrazas, restaurantes y agua turquesa en tu puerta.</p>
+            <div class="stack__panel-tags">
+              <span>Beach Club</span><span>Nightlife</span><span>Walkable</span>
+            </div>
+          </div>
+          <div class="stack__panel-media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1559625481-0bdca56c3b9d?w=1400&q=85');"></div></div>
+        </div>
+      </div>
+      <div class="stack__panel">
+        <div class="stack__panel-inner">
+          <div class="stack__panel-media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=1400&q=85');"></div></div>
+          <div class="stack__panel-info">
+            <span class="stack__panel-num">03 — Coco Bay</span>
+            <h3 class="stack__panel-name">Coco Bay</h3>
+            <p class="stack__panel-body" data-en="A boutique residential enclave hugging a private cove. Modern architecture, mature palms, and the most photographed sunsets on the coast." data-es="Un enclave residencial boutique abrazando una cala privada. Arquitectura moderna, palmeras maduras y los atardeceres más fotografiados de la costa.">Un enclave residencial boutique abrazando una cala privada. Arquitectura moderna, palmeras maduras y los atardeceres más fotografiados de la costa.</p>
+            <div class="stack__panel-tags">
+              <span>Boutique</span><span>Private Cove</span><span>Modern</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stack__panel">
+        <div class="stack__panel-inner">
+          <div class="stack__panel-info">
+            <span class="stack__panel-num">04 — Little Italy</span>
+            <h3 class="stack__panel-name">Little Italy</h3>
+            <p class="stack__panel-body" data-en="The walkable heart of Playa, two blocks from the beach. European cafés, late dinners, and the city's best people-watching corridor." data-es="El corazón peatonal de Playa, a dos cuadras de la playa. Cafés europeos, cenas tardías y el mejor corredor para observar a la gente.">El corazón peatonal de Playa, a dos cuadras de la playa. Cafés europeos, cenas tardías y el mejor corredor para observar a la gente.</p>
+            <div class="stack__panel-tags">
+              <span>Walkable</span><span>Restaurants</span><span>Central</span>
+            </div>
+          </div>
+          <div class="stack__panel-media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1400&q=85');"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY VIMEX
+       ============================================================ -->
+  <section class="why-vimex" data-reveal>
+    <div class="why-vimex__grid">
+      <div>
+        <div class="section__eyebrow" data-en="The Vimex Difference" data-es="La Diferencia Vimex">La Diferencia Vimex</div>
+        <h2 class="why-vimex__title reveal-up">
+          <span data-en="Why" data-es="¿Por qué">¿Por qué</span>
+          <em>Vimex?</em>
+        </h2>
+        <p class="why-vimex__body reveal-up delay-1" data-en="With over 20 years of trusted service in Playa del Carmen, Vimex has built a reputation for excellence, integrity, and genuine care. Our bilingual team treats every property like their own and every guest like family." data-es="Con más de 20 años de servicio de confianza en Playa del Carmen, Vimex ha construido una reputación de excelencia, integridad y cuidado genuino. Nuestro equipo bilingüe trata cada propiedad como propia y cada huésped como familia.">Con más de 20 años de servicio de confianza en Playa del Carmen, Vimex ha construido una reputación de excelencia, integridad y cuidado genuino. Nuestro equipo bilingüe trata cada propiedad como propia y cada huésped como familia.</p>
+        <a href="#contact" class="btn btn--primary reveal-up delay-2" data-magnetic>
+          <span data-en="Get in Touch" data-es="Contáctanos">Contáctanos</span>
+          <span class="arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+      <div class="reveal-img-wrap" style="aspect-ratio:1;border-radius:8px;overflow:hidden;position:relative">
+        <div class="bg" style="position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?w=1200&q=85');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY CHOOSE US
+       ============================================================ -->
+  <section class="why" data-reveal>
+    <div class="why__head">
+      <div>
+        <div class="section__eyebrow" data-en="Five Reasons" data-es="Cinco Razones">Cinco Razones</div>
+        <h2 class="section__title reveal-up">
+          <span data-en="Why choose" data-es="¿Por qué elegir">¿Por qué elegir</span>
+          <em>Vimex</em>
+        </h2>
+      </div>
+      <p class="services__sub reveal-up delay-1" data-en="Five reasons thousands of guests and property owners have trusted us for over two decades on the Riviera Maya." data-es="Cinco razones por las que miles de huéspedes y propietarios nos han confiado su experiencia durante más de dos décadas en la Riviera Maya.">Cinco razones por las que miles de huéspedes y propietarios nos han confiado su experiencia durante más de dos décadas en la Riviera Maya.</p>
+    </div>
+
+    <div class="why__list">
+      <div class="why__row" data-img="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?w=600&q=85">
+        <span class="why__num">— 01</span>
+        <h3 class="why__title" data-en="20+ Years of Experience" data-es="20+ Años de Experiencia">20+ Años de Experiencia</h3>
+        <p class="why__body" data-en="Two decades of trusted operations in the Riviera Maya — we know every community, every property, and every nuance of the local market." data-es="Dos décadas de operaciones de confianza en la Riviera Maya — conocemos cada comunidad, cada propiedad y cada matiz del mercado local.">Dos décadas de operaciones de confianza en la Riviera Maya — conocemos cada comunidad, cada propiedad y cada matiz del mercado local.</p>
+        <span class="why__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+        <div class="why__media" style="background-image:url('https://images.unsplash.com/photo-1521540216272-a50305cd4421?w=600&q=85')"></div>
+      </div>
+
+      <div class="why__row">
+        <span class="why__num">— 02</span>
+        <h3 class="why__title" data-en="Bilingual Team" data-es="Equipo Bilingüe">Equipo Bilingüe</h3>
+        <p class="why__body" data-en="Our fully bilingual English-Spanish staff ensures seamless communication for guests and owners from North America and Mexico alike." data-es="Nuestro personal completamente bilingüe en inglés y español garantiza una comunicación fluida para huéspedes y propietarios de Norteamérica y México.">Nuestro personal completamente bilingüe en inglés y español garantiza una comunicación fluida para huéspedes y propietarios de Norteamérica y México.</p>
+        <span class="why__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+        <div class="why__media" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=85')"></div>
+      </div>
+
+      <div class="why__row">
+        <span class="why__num">— 03</span>
+        <h3 class="why__title" data-en="Vetted Properties" data-es="Propiedades Verificadas">Propiedades Verificadas</h3>
+        <p class="why__body" data-en="Every property in our portfolio is personally inspected and maintained to meet Vimex's strict quality standards — before any guest arrives." data-es="Cada propiedad en nuestro portafolio es inspeccionada y mantenida personalmente bajo los estrictos estándares de calidad de Vimex — antes de cualquier llegada.">Cada propiedad en nuestro portafolio es inspeccionada y mantenida personalmente bajo los estrictos estándares de calidad de Vimex — antes de cualquier llegada.</p>
+        <span class="why__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+        <div class="why__media" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=85')"></div>
+      </div>
+
+      <div class="why__row">
+        <span class="why__num">— 04</span>
+        <h3 class="why__title" data-en="Local Experts" data-es="Expertos Locales">Expertos Locales</h3>
+        <p class="why__body" data-en="From the best cenotes to the hidden restaurants, our concierge knowledge makes your Riviera Maya experience truly unforgettable." data-es="Desde los mejores cenotes hasta los restaurantes ocultos, nuestro conocimiento de concierge hace que tu experiencia en la Riviera Maya sea verdaderamente inolvidable.">Desde los mejores cenotes hasta los restaurantes ocultos, nuestro conocimiento de concierge hace que tu experiencia en la Riviera Maya sea verdaderamente inolvidable.</p>
+        <span class="why__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+        <div class="why__media" style="background-image:url('https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=600&q=85')"></div>
+      </div>
+
+      <div class="why__row">
+        <span class="why__num">— 05</span>
+        <h3 class="why__title" data-en="Full Transparency" data-es="Total Transparencia">Total Transparencia</h3>
+        <p class="why__body" data-en="Property owners receive detailed financial reports, real-time updates, and direct communication — no surprises, ever." data-es="Los propietarios reciben reportes financieros detallados, actualizaciones en tiempo real y comunicación directa — sin sorpresas, nunca.">Los propietarios reciben reportes financieros detallados, actualizaciones en tiempo real y comunicación directa — sin sorpresas, nunca.</p>
+        <span class="why__arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </span>
+        <div class="why__media" style="background-image:url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&q=85')"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="testimonials" data-reveal>
+    <div class="testimonials__head">
+      <div>
+        <div class="section__eyebrow" style="color:var(--teal)" data-en="Guest Reviews" data-es="Opiniones de Huéspedes">Opiniones de Huéspedes</div>
+        <h2 class="section__title reveal-up" style="color:#fff">
+          <span data-en="What our" data-es="Lo que dicen">Lo que dicen</span>
+          <em data-en="guests say." data-es="nuestros huéspedes.">nuestros huéspedes.</em>
+        </h2>
+      </div>
+      <div class="testimonials__controls">
+        <button data-testi="prev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button data-testi="next" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="testimonials__stage">
+      <div class="testimonial">
+        <div class="testimonial__media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1602002418679-2a30f6d31de6?w=1200&q=85');"></div></div>
+        <div>
+          <blockquote class="testimonial__quote" data-en="Vimex made our family vacation completely seamless. The villa was exactly as described and the team was reachable every time we needed them. We'll be back next year." data-es="Vimex hizo que nuestras vacaciones familiares fueran completamente perfectas. La villa era exactamente como la describían y el equipo estuvo disponible cada vez que los necesitamos. Volveremos el próximo año.">Vimex hizo que nuestras vacaciones familiares fueran completamente perfectas. La villa era exactamente como la describían y el equipo estuvo disponible cada vez que los necesitamos. Volveremos el próximo año.</blockquote>
+          <div class="testimonial__author">
+            <strong>Sarah M.</strong>
+            <span>California, USA · Villa Brianna</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial__media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=85');"></div></div>
+        <div>
+          <blockquote class="testimonial__quote" data-en="After 10 years vacationing in Playa del Carmen, Vimex is hands-down the most professional rental team we've worked with. Their local knowledge and attention to detail is unmatched." data-es="Después de 10 años vacacionando en Playa del Carmen, Vimex es sin duda el equipo de rentas más profesional con el que hemos trabajado. Su conocimiento local y atención al detalle son inigualables.">Después de 10 años vacacionando en Playa del Carmen, Vimex es sin duda el equipo de rentas más profesional con el que hemos trabajado. Su conocimiento local y atención al detalle son inigualables.</blockquote>
+          <div class="testimonial__author">
+            <strong>Carlos &amp; Ana R.</strong>
+            <span>Ciudad de México · Aldea Thai Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial__media"><div class="bg" style="background-image:url('https://images.unsplash.com/photo-1568084680786-a84f91d1153c?w=1200&q=85');"></div></div>
+        <div>
+          <blockquote class="testimonial__quote" data-en="The property management service they provide for my condo has exceeded every expectation — transparent reporting, great guests, and absolutely zero headaches on my end." data-es="El servicio de administración de propiedades que brindan para mi condominio ha superado cada expectativa — reportes transparentes, excelentes huéspedes y absolutamente cero dolores de cabeza.">El servicio de administración de propiedades que brindan para mi condominio ha superado cada expectativa — reportes transparentes, excelentes huéspedes y absolutamente cero dolores de cabeza.</blockquote>
+          <div class="testimonial__author">
+            <strong>David L.</strong>
+            <span data-en="Toronto, Canada · Property Owner" data-es="Toronto, Canadá · Propietario">Toronto, Canadá · Propietario</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials__indicator">
+      <span class="count">01 / 03</span>
+      <span class="bar"></span>
+      <span data-en="Read more reviews" data-es="Más reseñas">Más reseñas</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section class="faq" data-reveal>
+    <div class="faq__head">
+      <div>
+        <div class="section__eyebrow" data-en="Got Questions?" data-es="¿Tienes Preguntas?">¿Tienes Preguntas?</div>
+        <h2 class="section__title reveal-up">
+          <span data-en="Frequently asked" data-es="Preguntas">Preguntas</span>
+          <em data-en="questions." data-es="frecuentes.">frecuentes.</em>
+        </h2>
+      </div>
+      <p class="services__sub reveal-up delay-1" data-en="Everything you need to know before you book a stay or trust us with your property. Don't see your question? Reach out — we love a good conversation." data-es="Todo lo que necesitas saber antes de reservar una estancia o confiarnos tu propiedad. ¿No ves tu pregunta? Escríbenos — nos encanta una buena conversación.">Todo lo que necesitas saber antes de reservar una estancia o confiarnos tu propiedad. ¿No ves tu pregunta? Escríbenos — nos encanta una buena conversación.</p>
+    </div>
+
+    <div class="faq__list">
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">01</span>
+          <span class="faq__q-text" data-en="How do I book a vacation rental with Vimex?" data-es="¿Cómo reservo una renta vacacional con Vimex?">¿Cómo reservo una renta vacacional con Vimex?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="Simply contact us directly via WhatsApp, phone, or the form on this page. Our bilingual team will confirm availability, walk you through the details of your chosen property, and coordinate everything — from the booking confirmation to a seamless arrival." data-es="Simplemente contáctanos directamente por WhatsApp, teléfono o el formulario de esta página. Nuestro equipo bilingüe confirmará disponibilidad, te explicará los detalles de la propiedad elegida y coordinará todo — desde la confirmación de reserva hasta una llegada sin contratiempos.">Simplemente contáctanos directamente por WhatsApp, teléfono o el formulario de esta página. Nuestro equipo bilingüe confirmará disponibilidad, te explicará los detalles de la propiedad elegida y coordinará todo — desde la confirmación de reserva hasta una llegada sin contratiempos.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">02</span>
+          <span class="faq__q-text" data-en="What is included in a Vimex vacation rental?" data-es="¿Qué incluye una renta vacacional de Vimex?">¿Qué incluye una renta vacacional de Vimex?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="All our properties come fully furnished with kitchen essentials, linens, and towels. Many feature private pools, air conditioning, and high-speed Wi-Fi. Each listing clearly states what is provided so you can plan your stay with complete confidence." data-es="Todas nuestras propiedades vienen completamente amuebladas con artículos de cocina, ropa de cama y toallas. Muchas cuentan con alberca privada, aire acondicionado y Wi-Fi de alta velocidad. Cada listado indica claramente qué se proporciona para que puedas planificar tu estancia con total confianza.">Todas nuestras propiedades vienen completamente amuebladas con artículos de cocina, ropa de cama y toallas. Muchas cuentan con alberca privada, aire acondicionado y Wi-Fi de alta velocidad. Cada listado indica claramente qué se proporciona para que puedas planificar tu estancia con total confianza.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">03</span>
+          <span class="faq__q-text" data-en="What areas of the Riviera Maya do you cover?" data-es="¿Qué áreas de la Riviera Maya cubren?">¿Qué áreas de la Riviera Maya cubren?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="We specialize in Playa del Carmen and its most sought-after communities — Playacar Fase 1 &amp; 2, Coco Bay, Mamitas Beach, and the Little Italy district. We also have properties in Tulum and Akumal." data-es="Nos especializamos en Playa del Carmen y sus comunidades más exclusivas — Playacar Fase 1 y 2, Coco Bay, Mamitas Beach y el distrito Little Italy. También contamos con propiedades en Tulum y Akumal.">Nos especializamos en Playa del Carmen y sus comunidades más exclusivas — Playacar Fase 1 y 2, Coco Bay, Mamitas Beach y el distrito Little Italy. También contamos con propiedades en Tulum y Akumal.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">04</span>
+          <span class="faq__q-text" data-en="Do you offer property management services?" data-es="¿Ofrecen servicios de administración de propiedades?">¿Ofrecen servicios de administración de propiedades?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="Yes. We offer full-service property management including guest communications, maintenance coordination, professional marketing, dynamic pricing strategy, and detailed financial reporting — all designed to maximize your rental income while you enjoy completely stress-free ownership." data-es="Sí. Ofrecemos administración de propiedades integral que incluye comunicación con huéspedes, coordinación de mantenimiento, marketing profesional, estrategia de precios dinámicos y reportes financieros detallados — todo diseñado para maximizar tus ingresos mientras disfrutas de una propiedad sin complicaciones.">Sí. Ofrecemos administración de propiedades integral que incluye comunicación con huéspedes, coordinación de mantenimiento, marketing profesional, estrategia de precios dinámicos y reportes financieros detallados — todo diseñado para maximizar tus ingresos mientras disfrutas de una propiedad sin complicaciones.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">05</span>
+          <span class="faq__q-text" data-en="What is your cancellation policy?" data-es="¿Cuál es su política de cancelación?">¿Cuál es su política de cancelación?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="Cancellation terms vary by property and are clearly disclosed before any booking is confirmed. We strongly encourage guests to review the specific policy for their rental and to contact our team with any questions before finalizing a reservation." data-es="Los términos de cancelación varían según la propiedad y se informan claramente antes de confirmar cualquier reserva. Recomendamos encarecidamente a los huéspedes revisar la política específica de su renta y contactar a nuestro equipo con cualquier duda antes de finalizar la reserva.">Los términos de cancelación varían según la propiedad y se informan claramente antes de confirmar cualquier reserva. Recomendamos encarecidamente a los huéspedes revisar la política específica de su renta y contactar a nuestro equipo con cualquier duda antes de finalizar la reserva.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">06</span>
+          <span class="faq__q-text" data-en="What languages does the Vimex team speak?" data-es="¿Qué idiomas habla el equipo de Vimex?">¿Qué idiomas habla el equipo de Vimex?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="Our entire staff is fully bilingual in English and Spanish, ensuring clear and friendly communication for guests and property owners from both North America and Mexico." data-es="Todo nuestro personal es completamente bilingüe en inglés y español, garantizando una comunicación clara y amistosa para huéspedes y propietarios de Norteamérica y México.">Todo nuestro personal es completamente bilingüe en inglés y español, garantizando una comunicación clara y amistosa para huéspedes y propietarios de Norteamérica y México.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__num">07</span>
+          <span class="faq__q-text" data-en="How far is Playa del Carmen from Cancún airport?" data-es="¿Qué tan lejos está Playa del Carmen del aeropuerto de Cancún?">¿Qué tan lejos está Playa del Carmen del aeropuerto de Cancún?</span>
+          <span class="faq__toggle"></span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner" data-en="Playa del Carmen is approximately 60 km south of Cancún International Airport — about a 45-minute drive via the federal highway. We can recommend trusted private transportation services to get you to your rental safely and comfortably." data-es="Playa del Carmen está aproximadamente a 60 km al sur del Aeropuerto Internacional de Cancún — unos 45 minutos en coche por la carretera federal. Podemos recomendar servicios de transporte privado de confianza para llevarte a tu renta de forma segura y cómoda.">Playa del Carmen está aproximadamente a 60 km al sur del Aeropuerto Internacional de Cancún — unos 45 minutos en coche por la carretera federal. Podemos recomendar servicios de transporte privado de confianza para llevarte a tu renta de forma segura y cómoda.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section id="contact" class="contact" data-reveal>
+    <div class="contact__grid">
+      <div class="contact__left">
+        <div class="section__eyebrow" style="color:var(--teal)" data-en="Let's talk" data-es="Conversemos">Conversemos</div>
+        <h2 class="section__title reveal-up">
+          <span data-en="Contact" data-es="Contáct-">Contáct-</span>
+          <em data-en="us." data-es="anos.">anos.</em>
+        </h2>
+        <p class="contact__sub reveal-up delay-1" data-en="Reach out and our bilingual team will get back to you promptly — usually within an hour. WhatsApp is our fastest channel." data-es="Escríbenos y nuestro equipo bilingüe te responderá a la brevedad — normalmente en una hora. WhatsApp es nuestro canal más rápido.">Escríbenos y nuestro equipo bilingüe te responderá a la brevedad — normalmente en una hora. WhatsApp es nuestro canal más rápido.</p>
+
+        <div class="contact__details">
+          <div class="contact__detail reveal-up delay-2">
+            <span class="contact__detail-label" data-en="Address" data-es="Dirección">Dirección</span>
+            <span class="contact__detail-value">80 Av. Norte entre Calle 30 Norte y 30 Bis Norte<br/>MZ 11, Ejidal 77712, Solidaridad<br/>Playa del Carmen, Quintana Roo</span>
+          </div>
+          <div class="contact__detail reveal-up delay-2">
+            <span class="contact__detail-label" data-en="Phones" data-es="Teléfonos">Teléfonos</span>
+            <span class="contact__detail-value">
+              <a href="tel:+529841311019">+52 (984) 131 1019</a>
+              <a href="tel:+529841857696">+52 (984) 185 7696</a>
+              <a href="tel:+15109903091">+1 (510) 990 3091</a>
+            </span>
+          </div>
+          <div class="contact__detail reveal-up delay-3">
+            <span class="contact__detail-label">Email</span>
+            <span class="contact__detail-value"><a href="mailto:info@vimexmx.com">info@vimexmx.com</a></span>
+          </div>
+        </div>
+      </div>
+
+      <form class="form reveal-up delay-2" onsubmit="event.preventDefault(); window.open('https://wa.me/529841311019', '_blank');">
+        <div class="form__toggle is-guest">
+          <button type="button" data-mode="guest" data-en="Guest" data-es="Huésped">Huésped</button>
+          <button type="button" data-mode="owner" data-en="Property Owner" data-es="Propietario">Propietario</button>
+        </div>
+        <div class="form__row">
+          <div class="form__field form__field--full">
+            <label data-en="Full Name *" data-es="Nombre completo *">Nombre completo *</label>
+            <input type="text" required />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field">
+            <label data-en="Email *" data-es="Correo electrónico *">Correo electrónico *</label>
+            <input type="email" required />
+          </div>
+          <div class="form__field">
+            <label data-en="Phone" data-es="Teléfono">Teléfono</label>
+            <input type="tel" />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field">
+            <label data-en="Check-in" data-es="Llegada">Llegada</label>
+            <input type="date" />
+          </div>
+          <div class="form__field">
+            <label data-en="Check-out" data-es="Salida">Salida</label>
+            <input type="date" />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field form__field--full">
+            <label data-en="Guests" data-es="Huéspedes">Huéspedes</label>
+            <input type="number" min="1" value="2" placeholder="2" />
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field form__field--full">
+            <label data-en="Message" data-es="Mensaje">Mensaje</label>
+            <textarea rows="3" placeholder="..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="form__submit" data-magnetic>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1-.5-1.9-1-2.6-1.7-.7-.6-1.3-1.4-1.9-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.2-.5s.1-.4 0-.5c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3z M20 4A11.5 11.5 0 0 0 4 20l-1.5 4 4.1-1.4A12 12 0 0 0 20 4z"/></svg>
+          <span data-en="Send via WhatsApp" data-es="Enviar por WhatsApp">Enviar por WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" data-reveal>
+    <div class="footer__big">
+      <span data-en="Welcome home." data-es="Bienvenido a casa.">Bienvenido a casa.</span>
+    </div>
+
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand"><img src="assets/vimex-logo-white.png" alt="Vimex" style="width:140px;height:auto;display:block;margin-bottom:20px" /></div>
+        <p class="footer__tagline" data-en="Family-owned vacation rentals & property management in the Riviera Maya since 2004." data-es="Rentas vacacionales y administración de propiedades familiar en la Riviera Maya desde 2004.">Rentas vacacionales y administración de propiedades familiar en la Riviera Maya desde 2004.</p>
+      </div>
+      <div class="footer__col">
+        <h4 data-en="Navigate" data-es="Navega">Navega</h4>
+        <a href="#feel" data-en="About Us" data-es="Quiénes Somos">Quiénes Somos</a>
+        <a href="#services" data-en="Property Management" data-es="Gestión de Propiedades">Gestión de Propiedades</a>
+        <a href="#dest" data-en="Destinations" data-es="Destinos">Destinos</a>
+        <a href="#contact" data-en="Contact" data-es="Contacto">Contacto</a>
+      </div>
+      <div class="footer__col">
+        <h4 data-en="Connect" data-es="Conecta">Conecta</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+        <a href="https://wa.me/529841311019">WhatsApp</a>
+      </div>
+      <div class="footer__col">
+        <h4 data-en="Reach Us" data-es="Contáctanos">Contáctanos</h4>
+        <a href="mailto:info@vimexmx.com">info@vimexmx.com</a>
+        <a href="tel:+529841311019">+52 (984) 131 1019</a>
+        <p>Playa del Carmen, MX</p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 Vimex Vacation Rentals &amp; Property Management</span>
+      <div class="footer__legal">
+        <a href="#" data-en="Terms of Use" data-es="Términos de Uso">Términos de Uso</a>
+        <a href="#" data-en="Privacy Policy" data-es="Política de Privacidad">Política de Privacidad</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+body > section:nth-child(4) > div:nth-child(2) > h1:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(1) { font-family: "Helvetica Neue" !important }
+body > section:nth-child(4) > div:nth-child(2) > h1:nth-child(2) > span:nth-child(1) > span:nth-child(2) > span:nth-child(1) { font-family: "Bricolage Grotesque" !important }
+</style>
