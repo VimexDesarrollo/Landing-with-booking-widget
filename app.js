@@ -7,9 +7,8 @@
   // Enable hidden-state reveal styles. Auto-kill after 6s so content
   // is never permanently hidden if animations fail to fire.
   document.body.classList.add("anim-ready");
-  setTimeout(() => {
-    document.body.classList.remove("anim-ready");
-  }, 6000);
+  setTimeout(() => document.body.classList.remove("anim-ready"), 9000);
+  document.body.style.overflow = "hidden";
 
   /* ------------------ CUSTOM CURSOR ------------------ */
   const dot = document.querySelector(".cursor-dot");
@@ -43,9 +42,13 @@
   const hero = document.querySelector(".hero");
   setTimeout(() => {
     if (loader) loader.classList.add("is-done");
-    if (hero) hero.classList.add("is-ready");
   }, 600);
-  setTimeout(() => { if (loader) loader.remove(); }, 2900);
+  // is-ready fires when the loader starts sliding (600ms is-done + 1800ms CSS delay = 2400ms)
+  // words fade+slide in as the loader reveals the hero
+  setTimeout(() => {
+    if (hero) hero.classList.add("is-ready");
+  }, 2400);
+  setTimeout(() => { if (loader) loader.remove(); document.body.style.overflow = ""; }, 3600);
 
   /* ------------------ NAV HIDE ON SCROLL ------------------ */
   const nav = document.querySelector(".nav");
@@ -141,8 +144,13 @@
   window.addEventListener("scroll", revealVisible, { passive: true });
   window.addEventListener("resize", revealVisible);
 
-  // Fallback B: no matter what, force-reveal anything still hidden after 4s
-  setTimeout(() => revealEls.forEach(markInView), 4000);
+  // Fallback B: safety net — only reveal elements currently in viewport, after animations are active
+  setTimeout(() => {
+    revealEls.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.95 && r.bottom > 0) markInView(el);
+    });
+  }, 5000);
 
   /* ------------------ HERO PARALLAX ------------------ */
   const heroImg = document.querySelector(".hero__img");
@@ -157,6 +165,16 @@
       heroInner.style.opacity = String(1 - y / window.innerHeight * 1.5);
     }
   }, { passive: true });
+
+  /* ------------------ FEEL AT HOME PARALLAX ------------------ */
+  const feelMedia = document.querySelector(".feel__media");
+  if (feelMedia) {
+    window.addEventListener("scroll", () => {
+      const rect = feelMedia.getBoundingClientRect();
+      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+      feelMedia.style.transform = `translateY(${-center * 0.07}px)`;
+    }, { passive: true });
+  }
 
   /* ------------------ RIVIERA PARALLAX ------------------ */
   const rivieraBg = document.querySelector(".riviera__bg");

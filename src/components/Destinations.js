@@ -57,6 +57,7 @@ export default function Destinations() {
           <div className="section__eyebrow">{t('Popular Destinations', 'Destinos Populares')}</div>
           <h2 className="section__title reveal-up">
             <span>{t('Discover our', 'Descubre nuestros')}</span>
+            {' '}
             <em>{t('destinations.', 'destinos.')}</em>
           </h2>
         </div>

@@ -49,6 +49,7 @@ export default function Stack() {
         </div>
         <h2 className="section__title reveal-up">
           <span>{t('Three destinations,', 'Tres destinos,')}</span>
+          {' '}
           <em>{t('one Vimex.', 'un Vimex.')}</em>
         </h2>
         <p className="reveal-up delay-1">

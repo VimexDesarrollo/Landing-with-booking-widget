@@ -43,6 +43,7 @@ export default function Stats() {
         </div>
         <h2 className="section__title reveal-up" style={{ color: '#fff', maxWidth: '22ch' }}>
           <span>{t('Two decades of trusted service in', 'Dos décadas de servicio de confianza en')}</span>
+          {' '}
           <em>{t('Playa del Carmen, Tulum & Akumal.', 'Playa del Carmen, Tulum y Akumal.')}</em>
         </h2>
 

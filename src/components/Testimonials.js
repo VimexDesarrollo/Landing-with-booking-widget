@@ -56,6 +56,7 @@ export default function Testimonials() {
           </div>
           <h2 className="section__title reveal-up" style={{ color: '#fff' }}>
             <span>{t('What our', 'Lo que dicen')}</span>
+            {' '}
             <em>{t('guests say.', 'nuestros huéspedes.')}</em>
           </h2>
         </div>

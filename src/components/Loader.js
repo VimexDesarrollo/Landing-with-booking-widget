@@ -5,16 +5,20 @@ export default function Loader() {
   const loaderRef = useRef(null)
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden'
     const loader = loaderRef.current
     const hero = document.querySelector('.hero')
     const timer1 = setTimeout(() => {
       loader?.classList.add('is-done')
-      hero?.classList.add('is-ready')
     }, 600)
     const timer2 = setTimeout(() => {
+      hero?.classList.add('is-ready')
+    }, 2400)
+    const timer3 = setTimeout(() => {
       loader?.remove()
-    }, 2900)
-    return () => { clearTimeout(timer1); clearTimeout(timer2) }
+      document.body.style.overflow = ''
+    }, 3600)
+    return () => { clearTimeout(timer1); clearTimeout(timer2); clearTimeout(timer3) }
   }, [])
 
   return (

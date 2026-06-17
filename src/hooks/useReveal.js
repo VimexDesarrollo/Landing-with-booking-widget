@@ -29,7 +29,12 @@ export function useReveal() {
     requestAnimationFrame(() => requestAnimationFrame(revealVisible))
     window.addEventListener('scroll', revealVisible, { passive: true })
     window.addEventListener('resize', revealVisible)
-    const fallback = setTimeout(() => els.forEach((el) => el.classList.add('in-view')), 4000)
+    const fallback = setTimeout(() => {
+      els.forEach((el) => {
+        const r = el.getBoundingClientRect()
+        if (r.top < window.innerHeight * 0.95 && r.bottom > 0) el.classList.add('in-view')
+      })
+    }, 5000)
 
     return () => {
       clearTimeout(t)

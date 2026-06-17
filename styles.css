@@ -359,30 +359,29 @@ body.is-scrolled .nav__logo-color { opacity: 1; }
 }
 .hero__title .word {
   display: inline-block;
-  overflow: hidden;
   vertical-align: top;
 }
 .hero__title .word span {
   display: inline-block;
 }
 body.anim-ready .hero__title .word span {
-  transform: translateY(110%);
+  opacity: 0;
+  transform: translateY(28px);
 }
 body.anim-ready .hero.is-ready .hero__title .word span {
-  animation: heroLine 1.2s var(--ease-cinema) forwards;
+  animation: heroLine 0.9s var(--ease-out) forwards;
 }
 @keyframes heroLine {
-  from { transform: translateY(110%); }
-  to { transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
-body.anim-ready .hero__title .word:nth-child(2) span { animation-delay: 0.08s; }
-body.anim-ready .hero__title .word:nth-child(3) span { animation-delay: 0.16s; }
-body.anim-ready .hero__title .word:nth-child(4) span { animation-delay: 0.24s; }
-body.anim-ready .hero__title .word:nth-child(5) span { animation-delay: 0.32s; }
-body.anim-ready .hero__title em .word:nth-child(1) span { animation-delay: 0.44s; }
-body.anim-ready .hero__title em .word:nth-child(2) span { animation-delay: 0.52s; }
-body.anim-ready .hero__title em .word:nth-child(3) span { animation-delay: 0.60s; }
-body.anim-ready .hero__title em .word:nth-child(4) span { animation-delay: 0.68s; }
+body.anim-ready .hero.is-ready .hero__title .word:nth-child(2) span { animation-delay: 0.07s; }
+body.anim-ready .hero.is-ready .hero__title .word:nth-child(3) span { animation-delay: 0.14s; }
+body.anim-ready .hero.is-ready .hero__title .word:nth-child(4) span { animation-delay: 0.21s; }
+body.anim-ready .hero.is-ready .hero__title .word:nth-child(5) span { animation-delay: 0.28s; }
+body.anim-ready .hero.is-ready .hero__title em .word:nth-child(1) span { animation-delay: 0.38s; }
+body.anim-ready .hero.is-ready .hero__title em .word:nth-child(2) span { animation-delay: 0.45s; }
+body.anim-ready .hero.is-ready .hero__title em .word:nth-child(3) span { animation-delay: 0.52s; }
+body.anim-ready .hero.is-ready .hero__title em .word:nth-child(4) span { animation-delay: 0.59s; }
 
 .hero__bottom {
   display: flex;

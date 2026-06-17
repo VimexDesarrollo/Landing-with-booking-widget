@@ -33,18 +33,35 @@ export default function FeelAtHome() {
   const { t } = useLang()
   const count20Ref = useRef(null)
   const countRatingRef = useRef(null)
+  const mediaRef = useRef(null)
 
   useCounter(count20Ref, 20, 0)
   useCounter(countRatingRef, 4.9, 1)
 
+  useEffect(() => {
+    const media = mediaRef.current
+    if (!media) return
+    const onScroll = () => {
+      const rect = media.getBoundingClientRect()
+      const center = rect.top + rect.height / 2 - window.innerHeight / 2
+      media.style.transform = `translateY(${-center * 0.07}px)`
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <section id="feel" className="feel" data-reveal>
+    <section id="feel" className="feel">
       <div className="feel__grid">
-        <div className="feel__copy">
+        <div className="feel__copy" data-reveal>
           <div className="section__eyebrow">{t('Your Home Away From Home', 'Tu Hogar Lejos de Casa')}</div>
-          <h2 className="reveal-up">
-            <span>{t('Feel at home in', 'Siéntete en casa en')}</span>
-            <em>{t('Playa del Carmen.', 'Playa del Carmen.')}</em>
+          <h2>
+            <span className="reveal-mask" style={{ display: 'block' }}>
+              <span>{t('Feel at home in', 'Siéntete en casa en')}</span>
+            </span>
+            <span className="reveal-mask" style={{ display: 'block' }}>
+              <em style={{ animationDelay: '0.14s' }}>{t('Playa del Carmen.', 'Playa del Carmen.')}</em>
+            </span>
           </h2>
           <p className="feel__body reveal-up delay-1">
             {t(
@@ -73,10 +90,10 @@ export default function FeelAtHome() {
           </div>
         </div>
 
-        <div className="feel__media reveal-img-wrap" data-reveal>
+        <div className="feel__media reveal-img-wrap" data-reveal ref={mediaRef}>
           <div
             className="bg"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1583416750470-965b2707b355?w=1200&q=85')" }}
+            style={{ backgroundImage: "url('/assets/sirenas.png')" }}
           />
           <span className="feel__media-caption">Playa del Carmen · Quintana Roo</span>
         </div>

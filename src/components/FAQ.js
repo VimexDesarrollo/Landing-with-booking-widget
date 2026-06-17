@@ -46,6 +46,7 @@ export default function FAQ() {
           <div className="section__eyebrow">{t('Got Questions?', '¿Tienes Preguntas?')}</div>
           <h2 className="section__title reveal-up">
             <span>{t('Frequently asked', 'Preguntas')}</span>
+            {' '}
             <em>{t('questions.', 'frecuentes.')}</em>
           </h2>
         </div>
