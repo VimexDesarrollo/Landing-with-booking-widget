@@ -41,7 +41,7 @@ export default function Hero() {
         <div
           className="hero__img"
           ref={heroImgRef}
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=2000&q=85')" }}
+          style={{ backgroundImage: "url('/assets/akumal.webp')" }}
         />
         <div className="hero__gradient" />
         <div className="hero__grain" />
@@ -68,7 +68,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <SearchWidget />
+      {/* Oculto temporalmente: widget de reservas */}
+      {/* <SearchWidget /> */}
     </section>
   )
 }

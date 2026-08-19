@@ -861,6 +861,133 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
 @keyframes revealImg { to { transform: scale(1); } }
 
 /* ============================================================
+   FEATURED PROPERTY (Oferta del Mes)
+   ============================================================ */
+.featured-property__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.featured-property__gallery {
+  position: relative;
+  height: 540px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.featured-property__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease-cinema);
+}
+.featured-property__slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.featured-property__slide .bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  transition: transform 6s ease-out;
+}
+.featured-property__slide.is-active .bg { transform: scale(1.08); }
+.featured-property__controls {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
+  z-index: 2;
+}
+.featured-property__controls button {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(6,19,40,0.35);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease-cinema);
+}
+.featured-property__controls button:hover {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+}
+.featured-property__badge {
+  display: inline-flex;
+  font-family: var(--f-mono, "JetBrains Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 100px;
+  color: var(--teal);
+  margin-bottom: 24px;
+}
+.featured-property__price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 24px 0;
+  font-family: var(--f-display, "Fraunces", "Times New Roman", serif);
+  font-weight: 300;
+  font-size: clamp(32px, 3vw, 48px);
+  color: var(--teal);
+}
+.featured-property__price span {
+  font-family: var(--f-mono, "JetBrains Mono", monospace);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.featured-property__specs {
+  font-family: var(--f-mono, "JetBrains Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 24px;
+}
+.featured-property__body {
+  font-family: var(--f-body, "Manrope", sans-serif);
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  max-width: 44ch;
+  margin-bottom: 32px;
+}
+.featured-property__amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.featured-property__amenities span {
+  font-family: var(--f-mono, "JetBrains Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.85);
+}
+@media (max-width: 900px) {
+  .featured-property__grid { grid-template-columns: 1fr; gap: 32px; }
+  .featured-property__gallery { height: 420px; }
+}
+@media (max-width: 700px) {
+  .featured-property__gallery { height: 320px; }
+}
+
+/* ============================================================
    FEEL AT HOME
    ============================================================ */
 .feel {
