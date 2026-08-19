@@ -86,8 +86,7 @@ export default function FeaturedProperty() {
             ))}
           </div>
 
-          {/* TODO: reemplazar con link del booking engine cuando esté listo */}
-          <a href="#" className="btn btn--primary reveal-up delay-2" data-magnetic>
+          <a href="https://vimexmx.guestybookings.com/es/properties/6a43e39a9ec77f0013eea387" className="btn btn--primary reveal-up delay-2" data-magnetic>
             <span>{t('Book Now', 'Reservar Ahora')}</span>
             <span className="arrow">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
