@@ -2,19 +2,17 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '@/context/LangContext'
 
-const images = Array.from({ length: 11 }, (_, i) => `/assets/huay-102/${String(i + 1).padStart(2, '0')}.jpg`)
+const images = Array.from({ length: 23 }, (_, i) => `/assets/CARM-103/${String(i + 1).padStart(2, '0')}.jpg`)
 
 const amenities = [
+  { en: 'Shared pool', es: 'Alberca compartida' },
+  { en: 'Jacuzzi', es: 'Jacuzzi' },
+  { en: 'Tropical garden & lounge', es: 'Jardín y lounge tropical' },
   { en: 'A/C', es: 'Aire acondicionado' },
   { en: 'WiFi', es: 'WiFi' },
   { en: 'Equipped kitchen', es: 'Cocina equipada' },
-  { en: 'Washer & dryer', es: 'Lavadora y secadora' },
-  { en: 'Elevator', es: 'Elevador' },
-  { en: 'Balcony', es: 'Balcón' },
-  { en: 'Cable TV', es: 'TV por cable' },
-  { en: 'Linens included', es: 'Ropa de cama' },
-  { en: 'Hair dryer', es: 'Secador de pelo' },
-  { en: 'Iron', es: 'Plancha' },
+  { en: 'Sofa bed', es: 'Sofá cama' },
+  { en: 'Boutique building', es: 'Edificio boutique' },
 ]
 
 export default function FeaturedProperty() {
@@ -33,7 +31,7 @@ export default function FeaturedProperty() {
   const next = () => setIdx((i) => (i + 1) % total)
 
   return (
-    <section className="section section--dark featured-property" data-reveal>
+    <section id="oferta-del-mes" className="section section--dark featured-property" data-reveal>
       <div className="featured-property__grid">
         <div className="featured-property__gallery">
           {images.map((src, i) => (
@@ -58,25 +56,25 @@ export default function FeaturedProperty() {
         <div>
           <div className="section__eyebrow">{t('Property of the Month', 'Oferta del Mes')}</div>
           <h2 className="section__title reveal-up">
-            <span>{t('Huay', 'Huay')}</span> <em>102</em>
+            <span>{t('Apartment in', 'Departamento en')}</span> <em>Tulum</em>
           </h2>
 
           <div className="featured-property__badge">
-            {t('Minimum stay: 30 nights', 'Estancia mínima: 30 noches')}
+            {t('Monthly rental', 'Renta mensual')}
           </div>
 
           <div className="featured-property__price">
-            $800 MXN <span>{t('/ night', '/ noche')}</span>
+            $21,000 MXN <span>{t('/ month', '/ mes')}</span>
           </div>
 
           <div className="featured-property__specs">
-            {t('Studio · 3 Guests · Downtown Playa del Carmen', 'Estudio · 3 Huéspedes · Centro, Playa del Carmen')}
+            {t('2 Bedrooms + sofa bed · Up to 6 Guests · Tulum', '2 Recámaras + sofá cama · Hasta 6 Huéspedes · Tulum')}
           </div>
 
           <p className="featured-property__body">
             {t(
-              'Steps from 5th Avenue, Huay 102 is a fully-equipped studio designed for extended stays — the perfect base for digital nomads and long-term guests who want to live the Caribbean lifestyle without giving up comfort. This month only, book at an exclusive monthly rate before it\'s gone.',
-              'A pasos de la Quinta Avenida, Huay 102 es un estudio totalmente equipado y pensado para estancias largas — la base perfecta para nómadas digitales y huéspedes de mediano plazo que quieren vivir el Caribe sin renunciar a la comodidad. Solo este mes, resérvalo a una tarifa mensual exclusiva antes de que se agote.'
+              'Inside a boutique building wrapped in tropical gardens in Tulum, this 2-bedroom condo comes with a sofa bed for up to 6 guests and access to a shared pool, jacuzzi, and lounge area under the trees. This month only, book at an exclusive monthly rate before it\'s gone.',
+              'Dentro de un edificio boutique rodeado de jardines tropicales en Tulum, este condominio de 2 recámaras incluye sofá cama para hasta 6 huéspedes y acceso a alberca compartida, jacuzzi y área de lounge entre los árboles. Solo este mes, resérvalo a una tarifa mensual exclusiva antes de que se agote.'
             )}
           </p>
 
@@ -86,7 +84,7 @@ export default function FeaturedProperty() {
             ))}
           </div>
 
-          <a href="https://vimexmx.guestybookings.com/es/properties/6a43e39a9ec77f0013eea387" className="btn btn--primary reveal-up delay-2" data-magnetic>
+          <a href="#" className="btn btn--primary reveal-up delay-2" data-magnetic>
             <span>{t('Book Now', 'Reservar Ahora')}</span>
             <span className="arrow">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>

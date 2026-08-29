@@ -17,6 +17,13 @@ export default function Loader() {
     const timer3 = setTimeout(() => {
       loader?.remove()
       document.body.style.overflow = ''
+      // Si se entró con un anchor (ej. /#oferta-del-mes), el navegador intenta
+      // saltar ahí antes de que el overflow:hidden de arriba se lo permita —
+      // se pierde. Una vez liberado el scroll, lo reintentamos a mano.
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash)
+        target?.scrollIntoView({ behavior: 'instant', block: 'start' })
+      }
     }, 3600)
     return () => { clearTimeout(timer1); clearTimeout(timer2); clearTimeout(timer3) }
   }, [])
