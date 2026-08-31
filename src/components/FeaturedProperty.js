@@ -89,7 +89,7 @@ const zilhaOffer = {
   badge: { en: 'Monthly rental', es: 'Renta mensual' }, // TODO: confirmar tipo de renta
   titlePre: { en: 'Apartment in', es: 'Departamento en' },
   titleEm: 'Playa del Carmen',
-  price: '$21,000 MXN', // TODO: precio real
+  price: '$14,000 MXN',
   priceUnit: { en: '/ month', es: '/ mes' }, // TODO: confirmar (/mes o /noche)
   specs: {
     en: 'Loft · Near Mamitas Beach · Playa del Carmen',
@@ -154,7 +154,7 @@ const lagOffer = {
   titlePre: { en: 'Apartment in', es: 'Departamento en' },
   titleEm: 'Mayakoba PDC',
   subtitle: 'Lagunas de Mayakoba',
-  price: '$21,000 MXN', // TODO: precio real
+  price: '$22,000 MXN',
   priceUnit: { en: '/ month', es: '/ mes' }, // TODO: confirmar (/mes o /noche)
   specs: {
     en: 'Apartment · Up to 4 Guests · Lagunas de Mayakoba',
