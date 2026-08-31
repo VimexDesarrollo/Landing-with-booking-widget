@@ -861,8 +861,50 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
 @keyframes revealImg { to { transform: scale(1); } }
 
 /* ============================================================
-   FEATURED PROPERTY (Oferta del Mes)
+   FEATURED PROPERTY (Ofertas del Mes)
    ============================================================ */
+.featured-property__carousel {
+  position: relative;
+}
+.featured-property__stage {
+  position: relative;
+}
+.featured-property__offer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease-cinema);
+}
+.featured-property__offer.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+}
+.featured-property__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(6, 19, 40, 0.35);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease-cinema);
+}
+.featured-property__nav:hover {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+}
+.featured-property__nav--prev { left: -28px; }
+.featured-property__nav--next { right: -28px; }
+
 .featured-property__grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -982,9 +1024,17 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
 @media (max-width: 900px) {
   .featured-property__grid { grid-template-columns: 1fr; gap: 32px; }
   .featured-property__gallery { height: 420px; }
+  .featured-property__nav {
+    width: 48px;
+    height: 48px;
+    background: rgba(6, 19, 40, 0.6);
+  }
+  .featured-property__nav--prev { left: 6px; }
+  .featured-property__nav--next { right: 6px; }
 }
 @media (max-width: 700px) {
   .featured-property__gallery { height: 320px; }
+  .featured-property__nav { top: 210px; }
 }
 
 /* ============================================================
