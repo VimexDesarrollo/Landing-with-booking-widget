@@ -5,7 +5,7 @@ import Loader from '@/components/Loader'
 import Cursor from '@/components/Cursor'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import FeaturedProperty from '@/components/FeaturedProperty'
+import FeaturedOffers from '@/components/FeaturedOffers'
 import FeelAtHome from '@/components/FeelAtHome'
 import MarqueeBand from '@/components/MarqueeBand'
 import Services from '@/components/Services'
@@ -47,7 +47,7 @@ export default function Home() {
       <Cursor />
       <Nav />
       <Hero />
-      <FeaturedProperty />
+      <FeaturedOffers />
       <FeelAtHome />
       <MarqueeBand />
       <Services />
