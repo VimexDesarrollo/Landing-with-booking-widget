@@ -63,5 +63,5 @@ export const lag505eOffer = {
     es: 'Condominio contemporáneo dentro de Lagunas de Mayakoba, comunidad privada rodeada de selva, con laguna navegable en kayak, albercas infinity y terraza privada en el 5º piso sobre la vegetación nativa. A 3 km de Playa Xcalacoco y junto al campo de golf El Camaleón (PGA Tour). Incluye lavadora, secadora y espacio de trabajo — ideal para familias y grupos que exploran la Riviera Maya desde un entorno tranquilo.',
   },
   amenities,
-  bookingUrl: '#', // TODO: link de Guesty
+  bookingUrl: 'https://vimexmx.guestybookings.com/properties/6a511e26c166e50013f19782',
 }

@@ -36,5 +36,5 @@ export const tulumOffer = {
     es: 'Dentro de un edificio boutique rodeado de jardines tropicales en Tulum, este condominio de 2 recámaras incluye sofá cama para hasta 6 huéspedes y acceso a alberca compartida, jacuzzi y área de lounge entre los árboles. Solo este mes, resérvalo a una tarifa mensual exclusiva antes de que se agote.',
   },
   amenities,
-  bookingUrl: '#',
+  bookingUrl: 'https://vimexmx.guestybookings.com/es/properties/6a42b88221fe96000e4dfafa',
 }

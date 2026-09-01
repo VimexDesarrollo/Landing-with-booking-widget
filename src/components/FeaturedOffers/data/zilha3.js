@@ -58,5 +58,5 @@ export const zilha3Offer = {
     es: 'Loft en planta baja con patio privado, alberca chica y terraza en la azotea, a 4 cuadras de la playa y 3 de la Quinta Avenida. Cocina totalmente equipada, ideal para familias o amigos que quieren todo a pie —Playa Mamitas, restaurantes y vida nocturna— sin necesidad de auto.',
   },
   amenities,
-  bookingUrl: '#', // TODO: link de Guesty
+  bookingUrl: 'https://vimexmx.guestybookings.com/properties/6a3d5fefe0419000121caf8a',
 }
