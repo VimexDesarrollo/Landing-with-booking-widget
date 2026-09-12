@@ -24,6 +24,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://vimexmx.com'),
+  // Fallback genérico — cada page.js bajo (site)/ define su propio title/description
+  // más específico; esto solo cubre rutas que no lo hagan.
   title: 'Vimex Vacation Rentals · Playa del Carmen, Tulum & Akumal',
   description: 'Family-owned vacation rentals and property management in the Riviera Maya since 2004. Bilingual team, 20+ years of experience.',
 }
