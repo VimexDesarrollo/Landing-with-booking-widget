@@ -1,4 +1,9 @@
-// Módulo servidor — nunca importar desde componentes 'use client'
+// Módulo servidor — nunca importar desde componentes 'use client'.
+// `import 'server-only'` no es solo un comentario: si algún día este archivo
+// (o algo que lo importe) termina en el grafo de un client component, el
+// build de Next falla en vez de empacar las credenciales en el bundle del
+// navegador en silencio.
+import 'server-only'
 
 const TOKEN_URL = 'https://booking.guesty.com/oauth2/token'
 const API_BASE  = 'https://booking.guesty.com/api'
