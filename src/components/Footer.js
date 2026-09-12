@@ -1,5 +1,11 @@
 'use client'
 import { useEffect } from 'react'
+import Link from 'next/link'
+import {
+  TbUsers, TbBuildingSkyscraper, TbCompass, TbMessageCircle,
+  TbBrandInstagram, TbBrandFacebook, TbBrandPinterest, TbBrandWhatsapp,
+  TbMail, TbPhone, TbMapPin,
+} from 'react-icons/tb'
 import { useLang } from '@/context/LangContext'
 
 function splitWord(el) {
@@ -48,23 +54,23 @@ export default function Footer() {
         </div>
         <div className="footer__col">
           <h4>{t('Navigate', 'Navega')}</h4>
-          <a href="#feel">{t('About Us', 'Quiénes Somos')}</a>
-          <a href="#services">{t('Property Management', 'Gestión de Propiedades')}</a>
-          <a href="#dest">{t('Destinations', 'Destinos')}</a>
-          <a href="#contact">{t('Contact', 'Contacto')}</a>
+          <Link href="/acerca-de-vimex#feel"><TbUsers /> {t('About Us', 'Quiénes Somos')}</Link>
+          <Link href="/acerca-de-vimex#services"><TbBuildingSkyscraper /> {t('Property Management', 'Gestión de Propiedades')}</Link>
+          <Link href="/acerca-de-vimex#dest"><TbCompass /> {t('Destinations', 'Destinos')}</Link>
+          <Link href="/acerca-de-vimex#contact"><TbMessageCircle /> {t('Contact', 'Contacto')}</Link>
         </div>
         <div className="footer__col">
           <h4>{t('Connect', 'Conecta')}</h4>
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
-          <a href="#">Pinterest</a>
-          <a href="https://wa.me/529841311019">WhatsApp</a>
+          <a href="#"><TbBrandInstagram /> Instagram</a>
+          <a href="#"><TbBrandFacebook /> Facebook</a>
+          <a href="#"><TbBrandPinterest /> Pinterest</a>
+          <a href="https://wa.me/529841311019"><TbBrandWhatsapp /> WhatsApp</a>
         </div>
         <div className="footer__col">
           <h4>{t('Reach Us', 'Contacto')}</h4>
-          <a href="mailto:info@vimexmx.com">info@vimexmx.com</a>
-          <a href="tel:+529841311019">+52 (984) 131 1019</a>
-          <p>Playa del Carmen, MX</p>
+          <a href="mailto:info@vimexmx.com"><TbMail /> info@vimexmx.com</a>
+          <a href="tel:+529841311019"><TbPhone /> +52 (984) 131 1019</a>
+          <p><TbMapPin /> Playa del Carmen, MX</p>
         </div>
       </div>
 
