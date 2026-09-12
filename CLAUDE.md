@@ -92,11 +92,25 @@ hueco por llenar. Una sola URL sirve ambos idiomas:
 |---|---|---|
 | Base URL | `booking.guesty.com` | `open-api.guesty.com` |
 | Credenciales | `GUESTY_CLIENT_ID/SECRET` | `GUESTY_PMS_CLIENT_ID/SECRET` |
-| Uso hoy | `src/lib/guesty.js` → `/api/search` (búsqueda de disponibilidad por fechas) | solo `scripts/seed-listings.mjs` (script suelto, no corre en la app) |
-| Uso futuro | igual (disponibilidad/cotización) | **fuente real del catálogo del Marketplace** (`GET /v1/listings`) |
+| Uso hoy | `src/lib/guesty.js` → `/api/search` (búsqueda de disponibilidad por fechas) | `src/lib/guestyPms.js` → `/api/properties` (catálogo del Marketplace) + `scripts/seed-listings.mjs` |
 
 El Marketplace (home) necesita "listar todo el catálogo", no "buscar disponibilidad por
-fecha" — por eso la integración real futura es contra **PMS Open API**, no Booking Engine.
+fecha" — por eso está conectado contra **PMS Open API**, no Booking Engine.
+
+**Estado de la integración PMS (2026-09-12): código listo, credenciales rotas.**
+Las credenciales en `.env.local` (`GUESTY_PMS_CLIENT_ID/SECRET`) devuelven
+`invalid_client` al pedir token — hay que revisarlas/regenerarlas en el portal de
+Guesty. Mientras tanto, `/api/properties` cae automáticamente al mock (ver abajo),
+así que el Marketplace sigue funcionando en dev. Referencia de auth/listings:
+[[reference_guesty_pms_open_api]] (docs oficiales, guardadas en memoria).
+
+⚠️ **Sin verificar contra una respuesta real todavía** (por las credenciales rotas):
+el nombre exacto de los query params de paginación (`skip`/`limit` en
+`src/lib/guestyPms.js`), el campo que indica "propiedad listada" (asumido `active`,
+en `mapGuestyListing.js`), y la forma exacta de la respuesta (¿array plano?
+¿`{results, count}}`?). En cuanto haya credenciales válidas, confirmar los tres
+contra una llamada real y ajustar esos dos archivos si hace falta — el resto del
+Marketplace (UI, paginación, cache) no debería necesitar cambios.
 
 ## Seguridad — credenciales de Guesty nunca al cliente
 
@@ -107,27 +121,38 @@ fecha" — por eso la integración real futura es contra **PMS Open API**, no Bo
   importa desde un componente `'use client'`, el build de Next **falla** en vez de empacar
   las credenciales en el bundle del navegador en silencio. Cualquier módulo nuevo que
   toque credenciales de Guesty debe llevar el mismo `import 'server-only'` al inicio.
-- `src/services/marketplace/getProperties.js` hoy es client-safe (solo mock, sin
-  secretos) pero **lo importa un hook `'use client'`** — por eso NO puede tener
-  `server-only` todavía. Cuando se conecte Guesty PMS real ahí, la llamada con
-  credenciales tiene que vivir en una API route server-only (ver TODO en ese archivo)
-  y `getProperties()` pasa a hacer `fetch('/api/properties')`, nunca un fetch directo a
-  `open-api.guesty.com` desde ese archivo.
+- `src/services/marketplace/getProperties.js` corre en el cliente (lo importa un
+  hook `'use client'`) y por eso **nunca** toca credenciales — solo hace
+  `fetch('/api/properties')`. Las credenciales de Guesty PMS viven exclusivamente
+  en `src/lib/guestyPms.js` (con `import 'server-only'`) y se usan únicamente
+  dentro de `src/app/api/properties/route.js` (route handler, siempre server-only
+  en Next). Si algún día alguien mueve la llamada a Guesty fuera de esa route hacia
+  `getProperties.js` o cualquier archivo importado por un client component, está
+  rompiendo esta regla — no hacerlo.
 - Antes de commitear, verificar que `.env.local` siga en `.gitignore` y que
   `git ls-files | grep env` solo devuelva `.env.example`.
 
-## Marketplace — capa de datos (`src/services/marketplace/`)
+## Marketplace — capa de datos (`src/services/marketplace/` + `src/app/api/properties/`)
 
 - `getProperties.js` — **única función que la UI debe importar**:
   `getProperties({ page, pageSize })` → `{ items, page, pageSize, total, hasMore }`.
-- Hoy `getProperties` llama a `mockProperties.js` (123 propiedades deterministas, con la
-  misma forma que un listing real de Guesty PMS: `_id, nickname, title, propertyType,
-  roomType, accommodates, bedrooms, bathrooms, address, prices, pictures, amenities`).
-- **TODO marcado en el código**: reemplazar la implementación mock por una llamada real a
-  Guesty PMS (`GET /v1/listings`). Como esa llamada necesita credenciales de servidor, la
-  real tendrá que pasar por una API route (`src/app/api/properties/route.js` o similar),
-  igual que `/api/search` envuelve hoy a `src/lib/guesty.js` — **no se puede llamar a Guesty
-  directo desde el cliente**.
+  Hace `fetch('/api/properties?page=&pageSize=')`, nada más — no sabe si la respuesta
+  viene de Guesty real o del mock de respaldo.
+- `src/app/api/properties/route.js` — route handler (server-only por naturaleza):
+  llama a `getListings()` de `src/lib/guestyPms.js` (Guesty PMS real, ver sección de
+  Guesty arriba), filtra por `active !== false` (defensa extra aunque ya se pide
+  `active=true` en la query), mapea cada listing con `mapGuestyListing.js` al shape
+  interno del Marketplace, y arma `{ items, page, pageSize, total, hasMore }`.
+  **Si Guesty PMS falla** (credenciales, red, lo que sea) cae automáticamente a
+  `mockProperties.js` y agrega `_fallback: true` a la respuesta — el Marketplace
+  nunca se rompe visualmente por un problema de Guesty.
+- `mockProperties.js` — 123 propiedades deterministas, mismo shape que un listing
+  real de Guesty PMS (`_id, nickname, title, propertyType, roomType, accommodates,
+  bedrooms, bathrooms, address, prices, pictures, amenities`). Se usa como
+  respaldo automático, no hace falta activarlo a mano.
+- `mapGuestyListing.js` — función pura (sin secretos) que traduce el shape crudo
+  de Guesty al shape interno — punto único para ajustar si el nombre real de un
+  campo de Guesty difiere de lo asumido (ver nota de "sin verificar" arriba).
 - `src/components/Marketplace/useMarketplaceFeed.js` — hook que pagina sobre
   `getProperties` con `IntersectionObserver` (mismo patrón nativo que `useReveal`, sin
   librerías de virtualización/scroll-infinito). Tamaño de página: 12.
@@ -162,8 +187,10 @@ fecha" — por eso la integración real futura es contra **PMS Open API**, no Bo
 - `src/components/` — un componente por sección de la home/about, más
   `FeaturedOffers/`, `SearchWidget/` (armado pero no montado en ninguna página hoy) y
   `Marketplace/` (grid + card + hook de scroll infinito).
-- `src/services/marketplace/` — capa de datos del Marketplace (mock hoy, Guesty PMS después).
+- `src/services/marketplace/` — capa de datos del Marketplace (fetch a `/api/properties` +
+  mapper + mock de respaldo).
 - `src/lib/guesty.js` — cliente server-only de Guesty Booking Engine API.
+- `src/lib/guestyPms.js` — cliente server-only de Guesty PMS Open API (catálogo).
 - `src/hooks/useReveal.js` — `useReveal()` / `useMagnetic()`.
 - `src/context/LangContext.js` — `useLang()` / `LangProvider`.
 - `scripts/seed-listings.mjs` — script suelto para poblar Guesty PMS con propiedades de
