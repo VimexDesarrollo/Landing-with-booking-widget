@@ -1,11 +1,6 @@
 'use client'
 import { useEffect } from 'react'
 import { useReveal, useMagnetic } from '@/hooks/useReveal'
-import Loader from '@/components/Loader'
-import Cursor from '@/components/Cursor'
-import Nav from '@/components/Nav'
-import Hero from '@/components/Hero'
-import FeaturedOffers from '@/components/FeaturedOffers'
 import FeelAtHome from '@/components/FeelAtHome'
 import MarqueeBand from '@/components/MarqueeBand'
 import Services from '@/components/Services'
@@ -18,9 +13,8 @@ import WhyChooseUs from '@/components/WhyChooseUs'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
 
-export default function Home() {
+export default function AcercaDeVimexClient() {
   useReveal()
   useMagnetic()
 
@@ -43,11 +37,6 @@ export default function Home() {
 
   return (
     <>
-      <Loader />
-      <Cursor />
-      <Nav />
-      <Hero />
-      <FeaturedOffers />
       <FeelAtHome />
       <MarqueeBand />
       <Services />
@@ -60,7 +49,6 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Contact />
-      <Footer />
     </>
   )
 }
