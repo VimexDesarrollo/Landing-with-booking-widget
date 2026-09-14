@@ -963,6 +963,15 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
   color: var(--navy);
   border-color: var(--teal);
 }
+/* Reserva siempre el alto de 2 renglones para el título de la oferta —
+   en em, no en px, para que siga escalando con el font-size fluido
+   (clamp(...)) de .section__title. Si no, cuando el título de una oferta
+   cabe en 1 línea y el de otra necesita 2, todo lo de abajo (subtítulo,
+   precio, specs, botones) se recorre y el alto de la sección cambia al
+   pasar de una oferta a otra en el carrusel. */
+.featured-property .section__title {
+  min-height: 1.92em;
+}
 .featured-property__subtitle {
   margin-top: 10px;
   font-family: var(--f-mono, "JetBrains Mono", monospace);
