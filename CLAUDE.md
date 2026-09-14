@@ -162,6 +162,9 @@ Marketplace (UI, paginación, cache) no debería necesitar cambios.
   para el detalle completo de qué se portó y cómo. Ese mismo doc deja anotado **el mapa como
   feature pendiente** (Leaflet + sync viewport↔grid) — no está implementado todavía, y su
   implementación choca con el scroll infinito actual (hay que resolverlo antes de construirlo).
+- **[docs/README.md](docs/README.md)** es el índice de toda la documentación de porting desde
+  booking-engine (arquitectura completa, widget de búsqueda, calendario a detalle) — empezar
+  ahí antes de portar cualquier otra pieza de ese proyecto.
 - Si el catálogo real crece a miles de propiedades, revisar si hace falta virtualización
   (hoy no hay `react-window` ni similar instalado — 123-ish items renderizados
   progresivamente es seguro, miles ya no).
