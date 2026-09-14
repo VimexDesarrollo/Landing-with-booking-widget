@@ -63,6 +63,10 @@ function buildProperty(index) {
     bedrooms,
     bathrooms,
     isListed: true,
+    // Vacío a propósito: todavía no existe un motor de reservas real por
+    // propiedad. El botón "Reservar Ahora" de PropertyCard.js queda como
+    // placeholder hasta que este campo se llene con una URL real.
+    bookingUrl: '',
     address: {
       full: `${destination.city}, ${destination.state}, México`,
       city: destination.city,

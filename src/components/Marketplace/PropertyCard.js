@@ -1,15 +1,27 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { TbBed, TbBath, TbUsers, TbMapPin, TbChevronLeft, TbChevronRight } from 'react-icons/tb'
+import {
+  TbBed, TbBath, TbUsers, TbMapPin, TbChevronLeft, TbChevronRight,
+  TbBrandWhatsapp, TbCalendarCheck,
+} from 'react-icons/tb'
 import { useLang } from '@/context/LangContext'
+import { WHATSAPP_NUMBER } from './constants'
+
+function buildWhatsAppUrl(property, lang) {
+  const msg = lang === 'en'
+    ? `Hi Vimex! I'm interested in ${property.title}.`
+    : `¡Hola Vimex! Me interesa ${property.title}.`
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
+}
 
 // Galería con crossfade — mismo mecanismo que ResidenceCard.tsx de booking-engine
 // (dos <img> apiladas, la anterior se desvanece mientras la nueva ya está debajo),
 // portado a JS plano sin Tailwind. Ver docs/porting-booking-engine-marketplace.md.
 export function PropertyCard({ property }) {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const price = property.prices?.basePrice
   const currency = property.prices?.currency || 'USD'
+  const waUrl = buildWhatsAppUrl(property, lang)
 
   const images = property.pictures?.length ? property.pictures : []
   const hasMultipleImages = images.length > 1
@@ -126,6 +138,28 @@ export function PropertyCard({ property }) {
         <div className="property-card__price">
           <strong>{currency} ${price}</strong>
           <span>{t('/ night', '/ noche')}</span>
+        </div>
+
+        <div className="property-card__actions">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="property-card__action property-card__action--whatsapp"
+          >
+            <TbBrandWhatsapp size={16} />
+            <span>WhatsApp</span>
+          </a>
+          {/* bookingUrl viene vacío hasta que exista un motor de reservas real
+              por propiedad (ver mockProperties.js / mapGuestyListing.js) —
+              placeholder a '#' a propósito, no un link roto por accidente. */}
+          <a
+            href={property.bookingUrl || '#'}
+            className="property-card__action property-card__action--book"
+          >
+            <TbCalendarCheck size={16} />
+            <span>{t('Book Now', 'Reservar Ahora')}</span>
+          </a>
         </div>
       </div>
     </article>

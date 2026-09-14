@@ -15,6 +15,9 @@ export function mapGuestyListingToProperty(listing) {
     bedrooms: listing.bedrooms ?? 0,
     bathrooms: listing.bathrooms ?? 0,
     isListed: listing.active !== false,
+    // Vacío a propósito: Guesty PMS no trae un link al motor de reservas por
+    // listing. Cuando exista uno real, este es el único lugar a tocar.
+    bookingUrl: '',
     address: {
       full: address.full || [address.city, address.state, address.country].filter(Boolean).join(', '),
       city: address.city || '',

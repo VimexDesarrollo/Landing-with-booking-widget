@@ -1253,6 +1253,40 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
 .property-card__price strong { font-size: 18px; }
 .property-card__price span { color: var(--ink-soft); font-size: 13px; }
 
+.property-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.property-card__action {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+.property-card__action:hover { transform: translateY(-1px); }
+.property-card__action--whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+.property-card__action--whatsapp:hover { filter: brightness(1.08); }
+.property-card__action--book {
+  background: var(--navy);
+  color: #fff;
+}
+.property-card__action--book:hover { background: var(--navy-deep); }
+@media (max-width: 360px) {
+  .property-card__actions { flex-direction: column; }
+}
+
 .property-card--skeleton {
   border-color: var(--line-light);
 }

@@ -171,6 +171,12 @@ limit, etc.) — sigue siendo la red de seguridad, ya no el estado normal.
   para el detalle completo de qué se portó y cómo. Ese mismo doc deja anotado **el mapa como
   feature pendiente** (Leaflet + sync viewport↔grid) — no está implementado todavía, y su
   implementación choca con el scroll infinito actual (hay que resolverlo antes de construirlo).
+- Cada card tiene botones de **WhatsApp** (`529842031391`, en `Marketplace/constants.js` —
+  mismo número que `FeaturedOffers/constants.js`, duplicado a propósito, no importado
+  cruzado) y **Reservar Ahora** (`property.bookingUrl`). `bookingUrl` viene **vacío a
+  propósito** desde `mockProperties.js` y `mapGuestyListing.js` — no existe todavía un motor
+  de reservas por propiedad. El botón cae a `#` mientras tanto; cuando exista la URL real,
+  esos dos archivos son los únicos que hay que tocar para llenarlo.
 - **[docs/README.md](docs/README.md)** es el índice de toda la documentación de porting desde
   booking-engine (arquitectura completa, widget de búsqueda, calendario a detalle) — empezar
   ahí antes de portar cualquier otra pieza de ese proyecto.
