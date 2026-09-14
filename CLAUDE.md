@@ -148,13 +148,25 @@ limit, etc.) — sigue siendo la red de seguridad, ya no el estado normal.
   Hace `fetch('/api/properties?page=&pageSize=')`, nada más — no sabe si la respuesta
   viene de Guesty real o del mock de respaldo.
 - `src/app/api/properties/route.js` — route handler (server-only por naturaleza):
-  llama a `getListings()` de `src/lib/guestyPms.js` (Guesty PMS real, ver sección de
-  Guesty arriba), filtra por `active !== false` (defensa extra aunque ya se pide
-  `active=true` en la query), mapea cada listing con `mapGuestyListing.js` al shape
-  interno del Marketplace, y arma `{ items, page, pageSize, total, hasMore }`.
-  **Si Guesty PMS falla** (credenciales, red, lo que sea) cae automáticamente a
-  `mockProperties.js` y agrega `_fallback: true` a la respuesta — el Marketplace
-  nunca se rompe visualmente por un problema de Guesty.
+  llama a `getAllListings()` de `src/lib/guestyPms.js` (trae **todo** el catálogo,
+  paginando internamente contra Guesty y cacheado 60s — necesario porque filtramos
+  después, no se puede pedir "solo TOTAL" a la API de Guesty), filtra por
+  `active !== false` **y** por nickname no excluido (`excludedNicknames.js` — ver
+  abajo), mapea cada listing con `mapGuestyListing.js` al shape interno del
+  Marketplace, y recién ahí pagina (`skip`/`pageSize`) sobre el resultado ya
+  filtrado — así `total`/`hasMore` reflejan el catálogo real que se muestra, no el
+  crudo de Guesty. **Si Guesty PMS falla** (credenciales, red, lo que sea) cae
+  automáticamente a `mockProperties.js` y agrega `_fallback: true` a la respuesta —
+  el Marketplace nunca se rompe visualmente por un problema de Guesty.
+- `excludedNicknames.js` — lista de nicknames a excluir del Marketplace, tomada de
+  la clasificación de negocio de Vimex (**TOTAL** / SIN RESERVAS / HOMEWATCH / PRUEBA
+  — Guesty no tiene esto nativo). Fuente: pestaña "Tipo de Propiedad" del panel
+  unificado de Guesty (artifact `Gs2moutHKxez9GhKzrTfyq`), snapshot 2026-09-14. Solo
+  **TOTAL** (reserva total, Vimex la administra de punta a punta) se muestra en
+  New_Landing — SIN RESERVAS (dueño administra directo), HOMEWATCH (ya no recibe
+  reservas) y PRUEBA (listings de prueba en Guesty) quedan fuera. ⚠️ Es un snapshot
+  puntual, no se sincroniza solo — si la clasificación cambia en el artifact, hay
+  que actualizar esta lista a mano.
 - `mockProperties.js` — 123 propiedades deterministas, mismo shape que un listing
   real de Guesty PMS (`_id, nickname, title, propertyType, roomType, accommodates,
   bedrooms, bathrooms, address, prices, pictures, amenities`). Se usa como

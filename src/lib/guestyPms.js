@@ -59,20 +59,48 @@ async function guestyPmsFetch(path) {
 }
 
 /**
- * Trae listings de Guesty PMS Open API, paginado.
- *
+ * Trae UNA página de listings de Guesty PMS Open API.
  * skip/limit confirmados (mismo patrón que list_listings() en
  * contabilidadVimex/backend/api/services/guesty_service.py, verificado en
- * producción). No mandamos `active`/`isListed` como filtro de query —
- * ese código de referencia tampoco lo hace, y no está confirmado que Guesty
- * lo respete como filtro server-side — filtramos nosotros mismos la
- * respuesta en route.js (ver ahí: chequea `active` E `isListed`, Guesty los
- * maneja como dos booleanos separados).
+ * producción).
  */
-export async function getListings({ skip = 0, limit = 12 } = {}) {
+export async function getListings({ skip = 0, limit = 100 } = {}) {
   const params = new URLSearchParams({
     skip: String(skip),
     limit: String(limit),
   })
   return guestyPmsFetch(`/listings?${params}`)
+}
+
+// Cache corto del catálogo completo — necesitamos TODOS los listings para
+// filtrar (active + nicknames excluidos, ver route.js) antes de paginar
+// nosotros mismos; sin esto, cada scroll del Marketplace re-pediría el
+// catálogo completo a Guesty en cada página. 60s alcanza para una sesión de
+// scroll sin servir datos demasiado viejos.
+let _allListingsCache = null
+let _allListingsExpiry = 0
+const ALL_LISTINGS_CACHE_MS = 60_000
+
+/**
+ * Trae TODOS los listings de la cuenta, paginando internamente con skip/limit
+ * (mismo patrón de loop que list_listings() en contabilidadVimex) hasta que
+ * Guesty devuelve menos de lo pedido. Cacheado 60s en memoria del servidor.
+ */
+export async function getAllListings() {
+  if (_allListingsCache && Date.now() < _allListingsExpiry) return _allListingsCache
+
+  const pageSize = 100
+  let skip = 0
+  const all = []
+  while (true) {
+    const data = await getListings({ skip, limit: pageSize })
+    const results = Array.isArray(data) ? data : data.results || []
+    all.push(...results)
+    if (results.length < pageSize) break
+    skip += results.length
+  }
+
+  _allListingsCache = all
+  _allListingsExpiry = Date.now() + ALL_LISTINGS_CACHE_MS
+  return all
 }
