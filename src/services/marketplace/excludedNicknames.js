@@ -30,4 +30,11 @@ const PRUEBA = [
   'Guesty Test', 'Propiedad de prueba', 'Akumal Test', 'PDC Test', 'tulum test',
 ]
 
-export const EXCLUDED_NICKNAMES = new Set([...SIN_RESERVAS, ...HOMEWATCH, ...PRUEBA])
+// Exclusiones manuales pedidas directamente por el usuario — no vienen de la
+// clasificación TOTAL/SIN RESERVAS/HOMEWATCH/PRUEBA del artifact, es un ajuste
+// aparte caso por caso.
+const MANUAL = [
+  'AMIR-308B', // pedido 2026-09-14
+]
+
+export const EXCLUDED_NICKNAMES = new Set([...SIN_RESERVAS, ...HOMEWATCH, ...PRUEBA, ...MANUAL])
