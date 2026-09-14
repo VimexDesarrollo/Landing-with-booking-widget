@@ -913,6 +913,11 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
   grid-template-columns: 1.1fr 1fr;
   gap: 80px;
   align-items: center;
+  /* Ancla el alto de la fila al de la imagen (540px, ver .featured-property__gallery).
+     Sin esto, si la columna de texto es más alta en una oferta (ej. cuando aparece
+     el subtítulo), la fila entera crece y la imagen -aunque mide 540px fijo- queda
+     centrada dentro de una fila más alta, corriendo su posición y la de todo lo demás. */
+  min-height: 540px;
 }
 .featured-property__gallery {
   position: relative;
@@ -1059,7 +1064,10 @@ body.anim-ready .in-view .reveal-img-wrap .bg {
   flex-shrink: 0;
 }
 @media (max-width: 900px) {
-  .featured-property__grid { grid-template-columns: 1fr; gap: 32px; }
+  /* Apilado (1 columna): ya no hay dos columnas compartiendo fila con
+     align-items:center, así que el min-height del desktop ya no aplica —
+     si no se resetea, deja espacio vacío de más debajo de la imagen. */
+  .featured-property__grid { grid-template-columns: 1fr; gap: 32px; min-height: 0; }
   .featured-property__gallery { height: 420px; }
   .featured-property__actions { width: 100%; }
   .featured-property__actions .btn { flex: 1 1 auto; justify-content: center; }
