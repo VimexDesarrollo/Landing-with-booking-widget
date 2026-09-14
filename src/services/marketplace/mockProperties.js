@@ -78,11 +78,15 @@ function buildProperty(index) {
       guestsIncludedInRegularFee: Math.max(2, Math.round(accommodates / 2)),
       extraPersonFee: 15 + Math.round(rnd() * 20),
     },
-    pictures: [
-      // picsum.photos/seed/<seed> siempre resuelve a la misma imagen para el mismo seed
-      // (útil para mock determinista); en la integración real esto viene de Guesty (`pictures[].original`).
-      { original: `https://picsum.photos/seed/${nickname}/1200/800`, caption: 'Exterior' },
-    ],
+    // picsum.photos/seed/<seed> siempre resuelve a la misma imagen para el mismo seed
+    // (útil para mock determinista); en la integración real esto viene de Guesty
+    // (`pictures[].original`), que también trae varias fotos por propiedad — por eso
+    // el mock genera varias en vez de una sola (la galería de PropertyCard.js necesita
+    // más de una para tener algo que ciclar).
+    pictures: Array.from({ length: 3 + (index % 3) }, (_, i) => ({
+      original: `https://picsum.photos/seed/${nickname}-${i}/1200/800`,
+      caption: i === 0 ? 'Exterior' : `Foto ${i + 1}`,
+    })),
     amenities,
   }
 }

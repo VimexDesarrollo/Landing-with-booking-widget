@@ -156,6 +156,12 @@ Marketplace (UI, paginación, cache) no debería necesitar cambios.
 - `src/components/Marketplace/useMarketplaceFeed.js` — hook que pagina sobre
   `getProperties` con `IntersectionObserver` (mismo patrón nativo que `useReveal`, sin
   librerías de virtualización/scroll-infinito). Tamaño de página: 12.
+- `PropertyCard.js` tiene galería con crossfade (flechas + dots, sin auto-cycle en hover) —
+  patrón portado de `booking-engine/src/components/home/ResidenceCard.tsx`, adaptado a CSS
+  plano. Ver **[docs/porting-booking-engine-marketplace.md](docs/porting-booking-engine-marketplace.md)**
+  para el detalle completo de qué se portó y cómo. Ese mismo doc deja anotado **el mapa como
+  feature pendiente** (Leaflet + sync viewport↔grid) — no está implementado todavía, y su
+  implementación choca con el scroll infinito actual (hay que resolverlo antes de construirlo).
 - Si el catálogo real crece a miles de propiedades, revisar si hace falta virtualización
   (hoy no hay `react-window` ni similar instalado — 123-ish items renderizados
   progresivamente es seguro, miles ya no).
