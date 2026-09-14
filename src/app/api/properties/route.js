@@ -16,8 +16,10 @@ export async function GET(request) {
     const data = await getListings({ skip, limit: pageSize })
     const rawListings = Array.isArray(data) ? data : data.results || []
 
-    // Filtro de seguridad además del `active=true` que ya mandamos en la query:
-    // nunca mostrar una propiedad no listada aunque Guesty no respete el filtro.
+    // Verificado contra datos reales (2026-09-14, cuenta Vimex): de 124
+    // listings, 123 tienen active=true pero solo 6 tienen isListed=true —
+    // isListed es otra cosa (probablemente distribución a canales/OTAs), no
+    // "está disponible en nuestro catálogo". El campo correcto es `active`.
     const listed = rawListings.filter((l) => l.active !== false)
     const items = listed.map(mapGuestyListingToProperty)
 

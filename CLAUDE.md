@@ -97,20 +97,29 @@ hueco por llenar. Una sola URL sirve ambos idiomas:
 El Marketplace (home) necesita "listar todo el catálogo", no "buscar disponibilidad por
 fecha" — por eso está conectado contra **PMS Open API**, no Booking Engine.
 
-**Estado de la integración PMS (2026-09-12): código listo, credenciales rotas.**
-Las credenciales en `.env.local` (`GUESTY_PMS_CLIENT_ID/SECRET`) devuelven
-`invalid_client` al pedir token — hay que revisarlas/regenerarlas en el portal de
-Guesty. Mientras tanto, `/api/properties` cae automáticamente al mock (ver abajo),
-así que el Marketplace sigue funcionando en dev. Referencia de auth/listings:
+**Estado de la integración PMS (2026-09-14): conectada y verificada contra datos reales.**
+Las credenciales originales de `GUESTY_PMS_CLIENT_ID/SECRET` nunca funcionaron
+(`invalid_client`) — eran de una app de Guesty distinta/nunca activada. Se
+reemplazaron por las mismas credenciales que ya usa `contabilidadVimex` en
+producción (`~/contabilidadVimex/backend/api/services/guesty_service.py`,
+integración con Guesty verificada en vivo desde julio 2026) — mismo account de
+Guesty de Vimex, ya confirmado funcionando. `/api/properties` ahora trae las 124
+propiedades reales de la cuenta.
+
+Dos cosas se corrigieron al verificar contra la respuesta real:
+- El request de token **no manda `scope`** (el patrón de `contabilidadVimex` no lo
+  usa y funciona igual — se quitó de `guestyPms.js`).
+- El campo que marca "propiedad disponible" es **`active`**, no `isListed`: de 124
+  listings reales, 123 tienen `active: true` pero solo 6 tienen `isListed: true`
+  (`isListed` es otra cosa, probablemente distribución a canales/OTAs) —
+  `route.js` filtra por `active !== false` únicamente.
+
+`skip`/`limit` para paginación y la forma de la respuesta (`{results, count, ...}`)
+quedaron confirmados correctos tal como estaban. Referencia completa de auth/listings:
 [[reference_guesty_pms_open_api]] (docs oficiales, guardadas en memoria).
 
-⚠️ **Sin verificar contra una respuesta real todavía** (por las credenciales rotas):
-el nombre exacto de los query params de paginación (`skip`/`limit` en
-`src/lib/guestyPms.js`), el campo que indica "propiedad listada" (asumido `active`,
-en `mapGuestyListing.js`), y la forma exacta de la respuesta (¿array plano?
-¿`{results, count}}`?). En cuanto haya credenciales válidas, confirmar los tres
-contra una llamada real y ajustar esos dos archivos si hace falta — el resto del
-Marketplace (UI, paginación, cache) no debería necesitar cambios.
+`/api/properties` conserva el fallback a mock si Guesty llega a fallar (red, rate
+limit, etc.) — sigue siendo la red de seguridad, ya no el estado normal.
 
 ## Seguridad — credenciales de Guesty nunca al cliente
 

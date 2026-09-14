@@ -25,9 +25,11 @@ async function getToken() {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Accept': 'application/json',
     },
+    // Sin `scope` a propósito: el patrón confirmado funcionando en producción
+    // (contabilidadVimex/backend/api/services/guesty_service.py) no lo manda
+    // y funciona igual — agregarlo no rompía nada, pero no hace falta.
     body: new URLSearchParams({
       grant_type: 'client_credentials',
-      scope: 'open-api',
       client_id: clientId,
       client_secret: clientSecret,
     }),
@@ -59,21 +61,18 @@ async function guestyPmsFetch(path) {
 /**
  * Trae listings de Guesty PMS Open API, paginado.
  *
- * ⚠️ skip/limit y el filtro `active=true` están implementados según la
- * convención más común de Guesty (paginación tipo Mongo + filtro simple por
- * query param), pero NO se pudieron verificar contra una respuesta real
- * (las credenciales configuradas devuelven "invalid_client" — ver CLAUDE.md).
- * En cuanto haya credenciales válidas, confirmar contra una respuesta real:
- * - que `skip`/`limit` sea el nombre correcto de los params de paginación
- * - que `active` sea el campo real que indica "propiedad listada"
- * - la forma exacta de la respuesta (¿array plano? ¿{results, count}?)
- * y ajustar este archivo + mapGuestyListing.js si hace falta.
+ * skip/limit confirmados (mismo patrón que list_listings() en
+ * contabilidadVimex/backend/api/services/guesty_service.py, verificado en
+ * producción). No mandamos `active`/`isListed` como filtro de query —
+ * ese código de referencia tampoco lo hace, y no está confirmado que Guesty
+ * lo respete como filtro server-side — filtramos nosotros mismos la
+ * respuesta en route.js (ver ahí: chequea `active` E `isListed`, Guesty los
+ * maneja como dos booleanos separados).
  */
 export async function getListings({ skip = 0, limit = 12 } = {}) {
   const params = new URLSearchParams({
     skip: String(skip),
     limit: String(limit),
-    active: 'true',
   })
   return guestyPmsFetch(`/listings?${params}`)
 }
