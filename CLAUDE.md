@@ -185,10 +185,13 @@ limit, etc.) — sigue siendo la red de seguridad, ya no el estado normal.
   implementación choca con el scroll infinito actual (hay que resolverlo antes de construirlo).
 - Cada card tiene botones de **WhatsApp** (`529842031391`, en `Marketplace/constants.js` —
   mismo número que `FeaturedOffers/constants.js`, duplicado a propósito, no importado
-  cruzado) y **Reservar Ahora** (`property.bookingUrl`). `bookingUrl` viene **vacío a
-  propósito** desde `mockProperties.js` y `mapGuestyListing.js` — no existe todavía un motor
-  de reservas por propiedad. El botón cae a `#` mientras tanto; cuando exista la URL real,
-  esos dos archivos son los únicos que hay que tocar para llenarlo.
+  cruzado) y **Reservar Ahora** (`property.bookingUrl`). En el mock (`mockProperties.js`)
+  sigue vacío a propósito (nicknames sintéticos, nunca coinciden con nada real) — cae a `#`.
+  En Guesty real, `mapGuestyListing.js` cruza `listing.nickname` contra
+  `bookingUrls.js` (snapshot manual de un CSV que dio el equipo, 2026-09-15, con el formato
+  de nickname real de Guesty — sin guiones, ej. `LAGV5`, distinto al formato con guiones de
+  `excludedNicknames.js`). De las 95 propiedades TOTAL, 74 ya tienen URL ahí; las ~21 que no
+  siguen cayendo a `#` hasta que exista ese link — no es un bug, es que todavía no hay dato.
 - **[docs/README.md](docs/README.md)** es el índice de toda la documentación de porting desde
   booking-engine (arquitectura completa, widget de búsqueda, calendario a detalle) — empezar
   ahí antes de portar cualquier otra pieza de ese proyecto.

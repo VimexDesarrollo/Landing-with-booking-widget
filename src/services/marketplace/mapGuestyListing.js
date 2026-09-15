@@ -1,3 +1,5 @@
+import { BOOKING_URLS } from './bookingUrls'
+
 // Función pura, sin secretos — normaliza un listing crudo de Guesty PMS al
 // shape interno del Marketplace (el mismo que ya produce mockProperties.js),
 // para que PropertyCard y compañía no necesiten saber si el dato viene de
@@ -15,9 +17,11 @@ export function mapGuestyListingToProperty(listing) {
     bedrooms: listing.bedrooms ?? 0,
     bathrooms: listing.bathrooms ?? 0,
     isListed: listing.active !== false,
-    // Vacío a propósito: Guesty PMS no trae un link al motor de reservas por
-    // listing. Cuando exista uno real, este es el único lugar a tocar.
-    bookingUrl: '',
+    // Guesty PMS no trae un link al motor de reservas por listing — se cruza
+    // por nickname contra bookingUrls.js (snapshot manual del CSV que dio el
+    // equipo). Si no hay URL para esa propiedad, queda '' y PropertyCard.js
+    // cae a '#' — no rompe nada, solo significa que aún no existe ese link.
+    bookingUrl: BOOKING_URLS[listing.nickname] || '',
     address: {
       full: address.full || [address.city, address.state, address.country].filter(Boolean).join(', '),
       city: address.city || '',
