@@ -152,9 +152,13 @@ export function PropertyCard({ property }) {
           </a>
           {/* bookingUrl viene vacío hasta que exista un motor de reservas real
               por propiedad (ver mockProperties.js / mapGuestyListing.js) —
-              placeholder a '#' a propósito, no un link roto por accidente. */}
+              placeholder a '#' a propósito, no un link roto por accidente.
+              target="_blank": abre en pestaña nueva para que el usuario no
+              pierda el Marketplace si sigue buscando otras propiedades. */}
           <a
             href={property.bookingUrl || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
             className="property-card__action property-card__action--book"
           >
             <TbCalendarCheck size={16} />
