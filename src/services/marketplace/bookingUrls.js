@@ -13,7 +13,23 @@
 // en el Marketplace (AMIR-308B está excluida a mano, LAGH101 no es TOTAL) —
 // se dejan igual, no hace daño tenerlos de más. Hay ~21 propiedades TOTAL sin
 // URL todavía en este CSV — sus cards siguen cayendo a '#' hasta que exista.
+//
+// AMAL-201 se agregó aparte (2026-09-17): sacado del guesty_id de la pestaña
+// "IDs" del artifact (Gs2moutHKxez9GhKzrTfyq) y PROBADO EN VIVO contra
+// guestybookings.com antes de darlo por bueno (devolvió el título y foto
+// reales de la propiedad, no la página genérica "Property page").
+//
+// De las 20 propiedades TOTAL sin URL, se probaron 19 más (todas menos
+// PERF-5, que no tiene guesty_id en la pestaña IDs) con el mismo método —
+// las otras 18 (QSOL-2C, SAN-206A, SELV-117A4, SING-404, SKY-205, SUK-307,
+// SYR-101, SYR-312, SYR-404, TAO-117G, TAO-120G, TAO-321PH, TER-201,
+// VIVA-207, WH-27, XALET-301B, YAXTE-1, ZACI-2A) devolvieron la página
+// genérica — el listing existe en Guesty pero no está publicado en este
+// canal de booking engine todavía. No agregar sus URLs aunque tengan
+// guesty_id — ya se probaron y no sirven; falta que Vimex las publique en
+// Guesty, no es algo que se arregle desde el código.
 export const BOOKING_URLS = {
+  'AMAL-201': 'https://vimexmx.guestybookings.com/properties/6a3466c7fe84350014458335',
   'AMIR-308B': 'https://vimexmx.guestybookings.com/properties/6a3aa1cc2f79eb0025e9107e',
   'ANAH-401S': 'https://vimexmx.guestybookings.com/properties/6a3da1b2e1cab6001445a44e',
   'ANAH-4A': 'https://vimexmx.guestybookings.com/properties/6a4bd8d61ce42d00151d2895',
