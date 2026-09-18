@@ -1,7 +1,6 @@
-// Mapeo nickname → URL del motor de reservas (vimexmx.guestybookings.com),
-// tomado de "Links_Booking_Engine_Completo - Booking Engine Links.csv"
-// (pegado por el usuario 2026-09-15). Snapshot manual — si Vimex agrega o
-// cambia links, hay que actualizar este archivo a mano, no se sincroniza solo.
+// Mapeo nickname → URL del motor de reservas (vimexmx.guestybookings.com).
+// Snapshot manual — si Vimex agrega o cambia links, hay que actualizar este
+// archivo a mano, no se sincroniza solo.
 //
 // Los nicknames de este archivo usan el formato REAL de Guesty (ej. "LAGV5",
 // sin guión) — no el formato con guiones de la clasificación TOTAL/SIN
@@ -9,25 +8,24 @@
 // mapGuestyListing.js se hace contra `listing.nickname` tal como viene de
 // Guesty, así que coincide directo.
 //
-// Trae 76 pares. Dos no corresponden a las propiedades TOTAL que se muestran
-// en el Marketplace (AMIR-308B está excluida a mano, LAGH101 no es TOTAL) —
-// se dejan igual, no hace daño tenerlos de más. Hay ~21 propiedades TOTAL sin
-// URL todavía en este CSV — sus cards siguen cayendo a '#' hasta que exista.
-//
-// AMAL-201 se agregó aparte (2026-09-17): sacado del guesty_id de la pestaña
-// "IDs" del artifact (Gs2moutHKxez9GhKzrTfyq) y PROBADO EN VIVO contra
-// guestybookings.com antes de darlo por bueno (devolvió el título y foto
-// reales de la propiedad, no la página genérica "Property page").
-//
-// De las 20 propiedades TOTAL sin URL, se probaron 19 más (todas menos
-// PERF-5, que no tiene guesty_id en la pestaña IDs) con el mismo método —
-// las otras 18 (QSOL-2C, SAN-206A, SELV-117A4, SING-404, SKY-205, SUK-307,
-// SYR-101, SYR-312, SYR-404, TAO-117G, TAO-120G, TAO-321PH, TER-201,
-// VIVA-207, WH-27, XALET-301B, YAXTE-1, ZACI-2A) devolvieron la página
-// genérica — el listing existe en Guesty pero no está publicado en este
-// canal de booking engine todavía. No agregar sus URLs aunque tengan
-// guesty_id — ya se probaron y no sirven; falta que Vimex las publique en
-// Guesty, no es algo que se arregle desde el código.
+// Historial:
+// - 2026-09-15: base de 76 pares de "Links_Booking_Engine_Completo -
+//   Booking Engine Links.csv" (pegado por el usuario). Dos no corresponden a
+//   propiedades TOTAL del Marketplace (AMIR-308B excluida a mano, LAGH101 no
+//   es TOTAL) — se dejan igual, no hace daño tenerlos de más.
+// - 2026-09-17: de las 20 propiedades TOTAL que quedaban sin URL, se sacó el
+//   guesty_id de cada una en la pestaña "IDs" del artifact
+//   (Gs2moutHKxez9GhKzrTfyq) y se PROBÓ CADA URL EN VIVO contra
+//   guestybookings.com antes de darla por buena (criterio: el <title> de la
+//   respuesta — "Property page" = genérico/no publicado todavía,
+//   cualquier otro título = real, confirmado). De 20: 1 (AMAL-201) ya
+//   resultó buena en la primera pasada; las otras 19 fallaron ese día
+//   (incluida PERF-5, que ni siquiera tenía guesty_id). Al re-probar horas
+//   después, las 18 que sí tenían guesty_id ya habían sido publicadas
+//   (alguien del equipo las publicó en Guesty entre medio) — se agregaron.
+//   PERF-5 se probó de nuevo con un guesty_id encontrado después en una vista
+//   más completa del artifact y SIGUE sin publicarse (sigue devolviendo la
+//   página genérica) — no tiene URL todavía, no es un olvido.
 export const BOOKING_URLS = {
   'AMAL-201': 'https://vimexmx.guestybookings.com/properties/6a3466c7fe84350014458335',
   'AMIR-308B': 'https://vimexmx.guestybookings.com/properties/6a3aa1cc2f79eb0025e9107e',
@@ -98,12 +96,30 @@ export const BOOKING_URLS = {
   'PLAY-16': 'https://vimexmx.guestybookings.com/properties/6a46900e58d5e900127f326a',
   'PUEB-108': 'https://vimexmx.guestybookings.com/properties/6a4694db0f346f00144d0fdc',
   'PVILLA-202': 'https://vimexmx.guestybookings.com/properties/6a3afbac16d521002459b8ba',
+  'QSOL-2C': 'https://vimexmx.guestybookings.com/properties/6a46a4d86c0aea0015910f4e',
   'SAN-103B': 'https://vimexmx.guestybookings.com/properties/6a3bf8c0e632dc001317fa91',
   'SAN-105A': 'https://vimexmx.guestybookings.com/properties/6a3c00a0e4898000148c2caf',
   'SAN-106A': 'https://vimexmx.guestybookings.com/properties/6a3ebe3d5f43c4001275ebb4',
+  'SAN-206A': 'https://vimexmx.guestybookings.com/properties/6a3c1183a088380022dc3d98',
+  'SELV-117A4': 'https://vimexmx.guestybookings.com/properties/6a3c19c53b75bc0023cfda03',
   'SERE-309': 'https://vimexmx.guestybookings.com/properties/6a3c226605dc9d00122b455b',
   'SERE-314': 'https://vimexmx.guestybookings.com/properties/6a46a85400b0e5001484938a',
   'SHORE-12': 'https://vimexmx.guestybookings.com/properties/6a46b0d34aace20013a48510',
   'SING-403': 'https://vimexmx.guestybookings.com/properties/6a46b3d0e3514d0010a53774',
+  'SING-404': 'https://vimexmx.guestybookings.com/properties/6a46cece693b4f0013bc30d6',
+  'SKY-205': 'https://vimexmx.guestybookings.com/properties/6a46d350b35c3000121b8d7d',
+  'SUK-307': 'https://vimexmx.guestybookings.com/properties/6a46d9f5a8a92100125b565a',
+  'SYR-101': 'https://vimexmx.guestybookings.com/properties/6a3c5197d4b0c6001532b92e',
+  'SYR-312': 'https://vimexmx.guestybookings.com/properties/6a3d465474e4520013834a1a',
+  'SYR-404': 'https://vimexmx.guestybookings.com/properties/6a46de842e940a00148a0743',
+  'TAO-117G': 'https://vimexmx.guestybookings.com/properties/6a3d4fb9d4c7dc0012648257',
+  'TAO-120G': 'https://vimexmx.guestybookings.com/properties/6a47d37d9786fe001426e3f6',
+  'TAO-321PH': 'https://vimexmx.guestybookings.com/properties/6a4e7d4acc0c930014f9aa43',
+  'TER-201': 'https://vimexmx.guestybookings.com/properties/6a47edb2e6afd00014680a93',
+  'VIVA-207': 'https://vimexmx.guestybookings.com/properties/6a47f1a5b787be00142d1d39',
+  'WH-27': 'https://vimexmx.guestybookings.com/properties/6a3d593636f1f5001160f70e',
+  'XALET-301B': 'https://vimexmx.guestybookings.com/properties/6a47f61b00b0e50014910a98',
+  'YAXTE-1': 'https://vimexmx.guestybookings.com/properties/6a47f94358d5e900128cfead',
+  'ZACI-2A': 'https://vimexmx.guestybookings.com/properties/6a47fc3c9df79f0012fe1a98',
   'ZILHA-3': 'https://vimexmx.guestybookings.com/properties/6a3d5fefe0419000121caf8a',
 }
